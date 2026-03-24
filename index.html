@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workout Pledge — Stay Consistent. Stay Rewarded.</title>
+  <meta name="description" content="Workout Pledge is the fitness accountability app that uses the science of loss aversion to help you build lasting, healthy habits. Any workout counts." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-bg: #FDFAF6;
+      --color-surface: #FFFFFF;
+      --color-surface-warm: #F6F0E8;
+      --color-accent: #E07A5F;
+      --color-accent-soft: rgba(224, 122, 95, 0.1);
+      --color-accent-hover: #c9694f;
+      --color-sage: #7BA08A;
+      --color-sage-soft: rgba(123, 160, 138, 0.1);
+      --color-plum: #8B6F8E;
+      --color-plum-soft: rgba(139, 111, 142, 0.08);
+      --color-sky: #6B9BC3;
+      --color-text: #2C2825;
+      --color-text-soft: #6B6560;
+      --color-text-light: #9B9590;
+      --color-border: rgba(44, 40, 37, 0.08);
+      --font-display: 'Fraunces', serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --radius: 20px;
+      --radius-sm: 12px;
+      --shadow-soft: 0 2px 20px rgba(44, 40, 37, 0.06);
+      --shadow-hover: 0 8px 30px rgba(44, 40, 37, 0.1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(253, 250, 246, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--color-text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-logo span { color: var(--color-accent); }
+
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      color: var(--color-text-soft);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--color-text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 100px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--color-accent);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: var(--color-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(224, 122, 95, 0.3);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--color-text);
+      border: 1.5px solid var(--color-border);
+    }
+    .btn-outline:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(224, 122, 95, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -150px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(123, 160, 138, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.1rem;
+      background: var(--color-sage-soft);
+      border: 1px solid rgba(123, 160, 138, 0.2);
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-sage);
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.6s ease both;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2.75rem, 6.5vw, 4.75rem);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      max-width: 780px;
+      animation: fadeInUp 0.6s ease 0.1s both;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--color-accent);
+    }
+
+    .hero-sub {
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      color: var(--color-text-soft);
+      max-width: 540px;
+      margin: 1.5rem auto 2.25rem;
+      line-height: 1.75;
+      animation: fadeInUp 0.6s ease 0.2s both;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeInUp 0.6s ease 0.3s both;
+    }
+
+    .hero-note {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: var(--color-text-light);
+      animation: fadeInUp 0.6s ease 0.4s both;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .activity-bar {
+      display: flex;
+      gap: 0.6rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 2.5rem 2rem;
+      animation: fadeInUp 0.6s ease 0.45s both;
+    }
+    .activity-pill {
+      padding: 0.45rem 1rem;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text-soft);
+    }
+    .activity-pill:nth-child(1) { border-color: rgba(224,122,95,0.25); color: var(--color-accent); background: var(--color-accent-soft); }
+    .activity-pill:nth-child(2) { border-color: rgba(123,160,138,0.25); color: var(--color-sage); background: var(--color-sage-soft); }
+    .activity-pill:nth-child(3) { border-color: rgba(139,111,142,0.25); color: var(--color-plum); background: var(--color-plum-soft); }
+    .activity-pill:nth-child(4) { border-color: rgba(107,155,195,0.25); color: var(--color-sky); background: rgba(107,155,195,0.08); }
+    .activity-pill:nth-child(5) { border-color: rgba(224,122,95,0.25); color: var(--color-accent); background: var(--color-accent-soft); }
+    .activity-pill:nth-child(6) { border-color: rgba(123,160,138,0.25); color: var(--color-sage); background: var(--color-sage-soft); }
+    .activity-pill:nth-child(7) { border-color: rgba(139,111,142,0.25); color: var(--color-plum); background: var(--color-plum-soft); }
+    .activity-pill:nth-child(8) { border-color: rgba(107,155,195,0.25); color: var(--color-sky); background: rgba(107,155,195,0.08); }
+
+    .insight-banner {
+      max-width: 860px;
+      margin: 0 auto 2rem;
+      padding: 2.5rem 3rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+    }
+    .insight-banner p {
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+      font-weight: 500;
+      line-height: 1.6;
+      color: var(--color-text);
+    }
+    .insight-banner p strong {
+      color: var(--color-accent);
+      font-weight: 700;
+    }
+    .insight-source {
+      margin-top: 0.75rem;
+      font-size: 0.82rem;
+      color: var(--color-text-light);
+      font-family: var(--font-body);
+    }
+
+    section { padding: 5rem 2rem; }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(1.85rem, 4vw, 2.75rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+    .section-header p {
+      color: var(--color-text-soft);
+      max-width: 500px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .step-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 2.25rem 2rem;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .step-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .step-icon {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .step-card:nth-child(1) .step-icon { background: var(--color-accent-soft); }
+    .step-card:nth-child(2) .step-icon { background: var(--color-sage-soft); }
+    .step-card:nth-child(3) .step-icon { background: var(--color-plum-soft); }
+    .step-card:nth-child(4) .step-icon { background: rgba(107,155,195,0.1); }
+
+    .step-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-text-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.65rem;
+    }
+    .step-card p {
+      color: var(--color-text-soft);
+      font-size: 0.93rem;
+      line-height: 1.7;
+    }
+
+    .features-section { background: var(--color-surface-warm); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .feature-emoji {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .feature-card p {
+      color: var(--color-text-soft);
+      font-size: 0.93rem;
+      line-height: 1.7;
+    }
+
+    .rewards-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .reward-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .reward-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+    .reward-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .reward-card h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .reward-card p {
+      color: var(--color-text-soft);
+      font-size: 0.93rem;
+      line-height: 1.65;
+    }
+
+    .quote-section {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .quote-section blockquote {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-style: italic;
+      font-size: clamp(1.35rem, 3vw, 1.85rem);
+      line-height: 1.5;
+      color: var(--color-text);
+      position: relative;
+    }
+    .quote-section blockquote::before {
+      content: '\201C';
+      font-size: 5rem;
+      color: var(--color-accent);
+      opacity: 0.2;
+      position: absolute;
+      top: -2rem; left: -0.75rem;
+      font-family: Georgia, serif;
+    }
+    .quote-source {
+      margin-top: 1.25rem;
+      font-size: 0.88rem;
+      color: var(--color-text-light);
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 5rem 2rem 6rem;
+    }
+
+    .cta-box {
+      max-width: 640px;
+      margin: 0 auto;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 24px;
+      padding: 3.5rem 2.5rem;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-sage), var(--color-plum));
+    }
+
+    .cta-box h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+    .cta-box > p {
+      color: var(--color-text-soft);
+      max-width: 420px;
+      margin: 0 auto 2rem;
+      font-size: 1rem;
+    }
+
+    .email-form {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 420px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .email-form input[type="email"] {
+      flex: 1;
+      min-width: 200px;
+      padding: 0.85rem 1.25rem;
+      border-radius: 100px;
+      border: 1.5px solid var(--color-border);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .email-form input[type="email"]::placeholder {
+      color: var(--color-text-light);
+    }
+    .email-form input[type="email"]:focus {
+      border-color: var(--color-accent);
+    }
+
+    #form-message {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    footer {
+      border-top: 1px solid var(--color-border);
+      padding: 2.5rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy {
+      color: var(--color-text-light);
+      font-size: 0.85rem;
+    }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a {
+      color: var(--color-text-light);
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--color-text); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a:not(.btn) { display: none; }
+      section { padding: 3.5rem 1.25rem; }
+      .insight-banner { padding: 2rem 1.5rem; margin-left: 1rem; margin-right: 1rem; }
+      .rewards-row { grid-template-columns: 1fr; }
+      .cta-box { padding: 2.5rem 1.5rem; }
+      .footer-inner { justify-content: center; text-align: center; }
+      .activity-bar { padding: 1.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Workout<span>Pledge</span></a>
+    <div class="nav-links">
+      <a href="#how-it-works">How It Works</a>
+      <a href="#features">Why It Works</a>
+      <a href="#cta" class="btn btn-primary">Join the Waitlist</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge">🌱 Coming Soon to iOS</div>
+    <h1>Small Stakes. <em>Big&nbsp;Consistency.</em></h1>
+    <p class="hero-sub">People work harder to avoid losing $10 than to earn $10. Workout Pledge uses that instinct to help you build a lasting fitness habit — whatever that looks like for you.</p>
+    <div class="hero-cta">
+      <a href="#cta" class="btn btn-primary">Get Early Access</a>
+      <a href="#how-it-works" class="btn btn-outline">Learn More</a>
+    </div>
+    <p class="hero-note">Works with Apple Watch, iPhone, and any Apple Health-connected device.</p>
+  </section>
+
+  <div class="activity-bar">
+    <span class="activity-pill">🧘 Yoga</span>
+    <span class="activity-pill">🏃 Running</span>
+    <span class="activity-pill">🏋️ Strength</span>
+    <span class="activity-pill">🏊 Swimming</span>
+    <span class="activity-pill">🚴 Cycling</span>
+    <span class="activity-pill">🥒 Pickleball</span>
+    <span class="activity-pill">🥾 Hiking</span>
+    <span class="activity-pill">💃 Dance</span>
+  </div>
+
+  <div class="insight-banner">
+    <p>Research shows that people are <strong>twice as motivated</strong> by the fear of losing something than the prospect of gaining something of equal value. Workout Pledge puts that science to work for your health.</p>
+    <div class="insight-source">Based on Kahneman &amp; Tversky's Prospect Theory</div>
+  </div>
+
+  <section id="how-it-works">
+    <div class="section-header">
+      <h2>How It Works</h2>
+      <p>Four simple steps toward a healthier, more consistent you.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-icon">🎯</div>
+        <div class="step-label">Step 1</div>
+        <h3>Choose a Challenge</h3>
+        <p>Pick a goal that fits your lifestyle — three yoga sessions a week, daily walks, weekend hikes. You decide what "showing up" looks like.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">💵</div>
+        <div class="step-label">Step 2</div>
+        <h3>Set Your Pledge</h3>
+        <p>Put a small amount of money on the line — enough to make skipping feel like a bad idea. It's your nudge to lace up on the days you'd rather not.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">⌚</div>
+        <div class="step-label">Step 3</div>
+        <h3>Move Your Way</h3>
+        <p>Do any workout that shows up in Apple Health. A morning run, a lunch walk, an evening Pilates class — if your device tracks it, it counts.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon">🎉</div>
+        <div class="step-label">Step 4</div>
+        <h3>Earn Rewards</h3>
+        <p>Hit your goals and earn points you can redeem for gift cards or donate to a charity you care about. Consistency pays — literally.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="features-section">
+    <div class="section-header">
+      <h2>Why It Works</h2>
+      <p>Built for real life, not just gym selfies.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-emoji">🧠</div>
+        <h3>Powered by Behavioral Science</h3>
+        <p>Loss aversion is one of the strongest motivators we have. A small financial stake turns "I should work out" into "I'm going to work out."</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">🤸</div>
+        <h3>Any Workout Counts</h3>
+        <p>Yoga, cardio, strength training, a pickleball session, a long walk — if your Apple Watch or fitness device logs it, Workout Pledge counts it.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">📱</div>
+        <h3>Automatic Verification</h3>
+        <p>No manual check-ins or selfie proofs. Workouts sync automatically from Apple Health, so you just focus on moving.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">🔒</div>
+        <h3>Fair &amp; Verified</h3>
+        <p>Device-level attestation protects every challenge. The system verifies workout data is real, so everyone plays by the same rules.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">👯</div>
+        <h3>Better Together</h3>
+        <p>Join challenges with friends or strangers. Knowing someone else has skin in the game too makes it easier to stay accountable.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">📈</div>
+        <h3>Built for the Long Haul</h3>
+        <p>This isn't a 30-day crash program. It's a tool for building sustainable habits, one consistent week at a time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <h2>Rewards That Feel Good</h2>
+      <p>When you stay consistent, you earn points. Here's how you can use them.</p>
+    </div>
+    <div class="rewards-row">
+      <div class="reward-card">
+        <div class="reward-icon">🎁</div>
+        <h3>Gift Cards</h3>
+        <p>Redeem your points for Amazon gift cards. Treat yourself to something nice — you earned it by showing up.</p>
+      </div>
+      <div class="reward-card">
+        <div class="reward-icon">💛</div>
+        <h3>Donate to Charity</h3>
+        <p>Turn your consistency into a force for good. Direct your rewards to a nonprofit and let your fitness journey help others too.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-section">
+    <blockquote>I don't need to run a marathon. I just need to keep showing up. And knowing I'll lose $10 if I don't? That's the nudge I needed.</blockquote>
+    <div class="quote-source">— The mindset that changes everything</div>
+  </section>
+
+  <section id="cta" class="cta-section">
+    <div class="cta-box">
+      <h2>Your Healthiest Habit Starts&nbsp;Here</h2>
+      <p>Join the waitlist and be the first to know when Workout Pledge launches on the App Store.</p>
+      <div class="email-form">
+        <input type="email" placeholder="you@email.com" id="email-input" />
+        <button class="btn btn-primary" onclick="handleSignup()">Join Waitlist</button>
+      </div>
+      <p id="form-message"></p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-copy">&copy; 2026 Workout Pledge. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="mailto:hello@workoutpledge.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function handleSignup() {
+      const input = document.getElementById('email-input');
+      const msg = document.getElementById('form-message');
+      const email = input.value.trim();
+
+      if (!email || !email.includes('@')) {
+        msg.textContent = 'Please enter a valid email address.';
+        msg.style.color = '#d9534f';
+        msg.style.display = 'block';
+        return;
+      }
+
+      msg.textContent = '\u{1F389} You\'re on the list! We\'ll let you know when we launch.';
+      msg.style.color = 'var(--color-sage)';
+      msg.style.display = 'block';
+      input.value = '';
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.step-card, .feature-card, .reward-card, .insight-banner').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
