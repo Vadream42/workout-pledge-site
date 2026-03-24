@@ -703,23 +703,43 @@
   </footer>
 
   <script>
-    function handleSignup() {
-      const input = document.getElementById('email-input');
-      const msg = document.getElementById('form-message');
-      const email = input.value.trim();
+function handleSignup() {
+  const input = document.getElementById('email-input');
+  const msg = document.getElementById('form-message');
+  const btn = document.querySelector('.email-form .btn');
+  const email = input.value.trim();
 
-      if (!email || !email.includes('@')) {
-        msg.textContent = 'Please enter a valid email address.';
-        msg.style.color = '#d9534f';
-        msg.style.display = 'block';
-        return;
-      }
+  if (!email || !email.includes('@')) {
+    msg.textContent = 'Please enter a valid email address.';
+    msg.style.color = '#d9534f';
+    msg.style.display = 'block';
+    return;
+  }
 
-      msg.textContent = '\u{1F389} You\'re on the list! We\'ll let you know when we launch.';
-      msg.style.color = 'var(--color-sage)';
-      msg.style.display = 'block';
-      input.value = '';
-    }
+  btn.textContent = 'Joining...';
+  btn.disabled = true;
+
+  fetch('https://script.google.com/macros/s/AKfycbzKtfiVz8GH--DYmVOQinFE6hNn-CLCsY9rTLTLJ0Lhrh6pSwy01ujpPZNgKkk5ZEIg/exec', {
+    method: 'POST',
+    body: JSON.stringify({ email: email })
+  })
+  .then(res => res.json())
+  .then(data => {
+    msg.textContent = '🎉 You\'re on the list! We\'ll let you know when we launch.';
+    msg.style.color = 'var(--color-sage)';
+    msg.style.display = 'block';
+    input.value = '';
+  })
+  .catch(err => {
+    msg.textContent = 'Something went wrong. Please try again.';
+    msg.style.color = '#d9534f';
+    msg.style.display = 'block';
+  })
+  .finally(() => {
+    btn.textContent = 'Join Waitlist';
+    btn.disabled = false;
+  });
+}
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
