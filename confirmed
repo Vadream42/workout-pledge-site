@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Email Confirmed • Workout Pledge</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+      background: #f7f7f7;
+      color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 48px 40px;
+      border-radius: 16px;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.5;
+      margin-bottom: 24px;
+      color: #444;
+    }
+
+    .checkmark {
+      font-size: 56px;
+      margin-bottom: 16px;
+    }
+
+    .cta {
+      display: inline-block;
+      padding: 14px 22px;
+      background: #111;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity .2s;
+    }
+
+    .cta:hover {
+      opacity: 0.85;
+    }
+
+    .subtle {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="checkmark">✔️</div>
+    <h1>Email Confirmed</h1>
+    <p>Your email is now verified. You can return to the Workout Pledge app to finish setting up your account.</p>
+
+    <a class="cta" href="workoutpledge://email-confirmed">Return to the App</a>
+
+    <p class="subtle">If the app doesn’t open automatically, just switch back to it manually.</p>
+  </div>
+</body>
+</html>
