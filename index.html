@@ -133,6 +133,7 @@
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
       border: none;
+      white-space: nowrap;
     }
     .btn-primary {
       background: var(--color-accent);
@@ -575,15 +576,27 @@
     .footer-links a:hover { color: var(--color-text); }
 
     @media (max-width: 768px) {
-      nav { padding: 1rem 1.25rem; }
+      nav { padding: 0.75rem 1rem; }
       .nav-links { gap: 1rem; }
       .nav-links a:not(.btn) { display: none; }
+      .nav-logo { font-size: 1.1rem; gap: 0.4rem; }
+      .nav-logo img { height: 28px; }
+      .nav-links .btn {
+        padding: 0.55rem 1rem;
+        font-size: 0.82rem;
+      }
       section { padding: 3.5rem 1.25rem; }
       .insight-banner { padding: 2rem 1.5rem; margin-left: 1rem; margin-right: 1rem; }
       .rewards-row { grid-template-columns: 1fr; }
       .cta-box { padding: 2.5rem 1.5rem; }
       .footer-inner { justify-content: center; text-align: center; }
       .activity-bar { padding: 1.5rem 1rem; }
+    }
+
+    @media (max-width: 400px) {
+      .nav-links .btn { padding: 0.5rem 0.85rem; font-size: 0.78rem; }
+      .nav-logo { font-size: 1rem; }
+      .nav-logo img { height: 26px; }
     }
   </style>
 </head>
@@ -597,7 +610,7 @@
     <div class="nav-links">
       <a href="#how-it-works">How It Works</a>
       <a href="#features">Why It Works</a>
-      <a href="#cta" class="btn btn-primary">Join the Waitlist</a>
+      <a href="#cta" class="btn btn-primary">Join Waitlist</a>
     </div>
   </nav>
 
