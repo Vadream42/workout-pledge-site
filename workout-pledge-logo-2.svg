@@ -1,0 +1,10 @@
+<svg width="180" height="210" viewBox="0 0 180 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M90 8L16 40V100C16 148 48 186 90 202C132 186 164 148 164 100V40L90 8Z" fill="#1a1a1a" stroke="#e07850" stroke-width="3"/>
+  <path d="M90 22L28 49V100C28 141 56 174 90 188C124 174 152 141 152 100V49L90 22Z" fill="none" stroke="#e07850" stroke-width="1" opacity="0.2"/>
+  <path d="M60 105L82 127L124 78" stroke="#e07850" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="90" cy="56" r="3" fill="#e07850" opacity="0.5"/>
+  <circle cx="72" cy="62" r="2" fill="#e07850" opacity="0.25"/>
+  <circle cx="108" cy="62" r="2" fill="#e07850" opacity="0.25"/>
+  <text x="90" y="152" text-anchor="middle" fill="#faf5ef" font-family="Outfit, sans-serif" font-weight="800" font-size="14" letter-spacing="3">WORKOUT</text>
+  <text x="90" y="168" text-anchor="middle" fill="#e07850" font-family="Outfit, sans-serif" font-weight="600" font-size="10" letter-spacing="5">PLEDGE</text>
+</svg>

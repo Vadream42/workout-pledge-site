@@ -91,8 +91,24 @@
       color: var(--color-text);
       text-decoration: none;
       letter-spacing: -0.01em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
     }
     .nav-logo span { color: var(--color-accent); }
+    .nav-logo img {
+      height: 34px;
+      width: auto;
+      display: block;
+    }
+
+    .hero-logo {
+      width: 140px;
+      height: auto;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 6px 24px rgba(44, 40, 37, 0.12));
+      animation: fadeInUp 0.6s ease both;
+    }
 
     .nav-links { display: flex; gap: 2rem; align-items: center; }
     .nav-links a {
@@ -574,7 +590,10 @@
 <body>
 
   <nav>
-    <a href="#" class="nav-logo">Workout<span>Pledge</span></a>
+    <a href="#" class="nav-logo" aria-label="Workout Pledge home">
+      <img src="workout-pledge-logo-2.svg" alt="Workout Pledge shield logo" />
+      Workout<span>Pledge</span>
+    </a>
     <div class="nav-links">
       <a href="#how-it-works">How It Works</a>
       <a href="#features">Why It Works</a>
@@ -583,6 +602,7 @@
   </nav>
 
   <section class="hero">
+    <img src="workout-pledge-logo-2.svg" alt="Workout Pledge shield logo" class="hero-logo" />
     <div class="hero-badge">🌱 Coming Soon to iOS</div>
     <h1>Small Stakes. <em>Big&nbsp;Consistency.</em></h1>
     <p class="hero-sub">People work harder to avoid losing $10 than to earn $10. Workout Pledge uses that instinct to help you build a lasting fitness habit — whatever that looks like for you.</p>
@@ -619,7 +639,7 @@
         <div class="step-icon">🎯</div>
         <div class="step-label">Step 1</div>
         <h3>Choose a Challenge</h3>
-        <p>Pick a goal that fits your lifestyle — three yoga sessions a week, daily walks, weekend hikes. You decide what "showing up" looks like.</p>
+        <p>Pick a goal that fits your lifestyle — set how many days a week you'll commit to moving. Each qualifying day needs at least 30 minutes of exercise, but you decide what "showing up" looks like: yoga, walks, hikes, whatever works.</p>
       </div>
       <div class="step-card">
         <div class="step-icon">💵</div>
@@ -631,7 +651,7 @@
         <div class="step-icon">⌚</div>
         <div class="step-label">Step 3</div>
         <h3>Move Your Way</h3>
-        <p>Do any workout that shows up in Apple Health. A morning run, a lunch walk, an evening Pilates class — if your device tracks it, it counts.</p>
+        <p>Do any workout that shows up in Apple Health — a morning run, a lunch walk, an evening Pilates class. Stack multiple activities across the day to hit your 30-minute threshold; different workout types all count toward the same goal.</p>
       </div>
       <div class="step-card">
         <div class="step-icon">🎉</div>
@@ -671,7 +691,7 @@
       <div class="feature-card">
         <div class="feature-emoji">👯</div>
         <h3>Better Together</h3>
-        <p>Join challenges with friends or strangers. Knowing someone else has skin in the game too makes it easier to stay accountable.</p>
+        <p>Take on challenges with friends and get real-time notifications when they finish a workout — plus friendly nudges from them when you've been quiet. Shared accountability makes showing up easier.</p>
       </div>
       <div class="feature-card">
         <div class="feature-emoji">📈</div>
