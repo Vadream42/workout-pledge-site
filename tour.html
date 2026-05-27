@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-X3DXMLCFG5"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -12,12 +11,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Take the Tour — Workout Pledge</title>
-  <meta name="description" content="A 20-step walkthrough of Workout Pledge — see exactly how to pledge, track workouts, earn points, and cash out for gift cards or charity donations." />
+  <meta name="description" content="A quick walkthrough of how Workout Pledge works — pledges, tracking, friends, points, and redemptions, in about a minute." />
 
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://workoutpledge.app/tour.html" />
   <meta property="og:title" content="Take the Tour — Workout Pledge" />
-  <meta property="og:description" content="A 20-step walkthrough of how Workout Pledge actually works." />
+  <meta property="og:description" content="A quick walkthrough of how Workout Pledge actually works." />
   <meta property="og:image" content="https://workoutpledge.app/og-image.png" />
 
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -31,6 +30,7 @@
 
   <style>
     :root {
+      /* Website palette */
       --color-bg: #FDFAF6;
       --color-surface: #FFFFFF;
       --color-surface-warm: #F6F0E8;
@@ -39,15 +39,25 @@
       --color-accent-hover: #c9694f;
       --color-sage: #7BA08A;
       --color-sage-soft: rgba(123, 160, 138, 0.1);
-      --color-plum: #8B6F8E;
-      --color-plum-soft: rgba(139, 111, 142, 0.08);
-      --color-sky: #6B9BC3;
       --color-text: #2C2825;
       --color-text-soft: #6B6560;
       --color-text-light: #9B9590;
       --color-border: rgba(44, 40, 37, 0.08);
-      --color-red: #d9534f;
-      --color-green: #5cb85c;
+
+      /* Exact in-app brand palette (used INSIDE phone mockups) */
+      --app-coral: #E07850;
+      --app-coral-light: rgba(224, 120, 80, 0.10);
+      --app-coral-medium: rgba(224, 120, 80, 0.30);
+      --app-black: #1A1A1A;
+      --app-cream: #FAF5EF;
+      --app-green: #4CAF50;
+      --app-goal-green: #48BB78;
+      --app-goal-green-light: rgba(72, 187, 120, 0.25);
+      --app-red: #D32F2F;
+      --app-sage: #8BA48B;
+      --app-sage-light: rgba(139, 164, 139, 0.15);
+      --app-text-gray: #6B6560;
+
       --font-display: 'Fraunces', serif;
       --font-body: 'Plus Jakarta Sans', sans-serif;
       --radius: 20px;
@@ -58,267 +68,168 @@
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
     body {
       font-family: var(--font-body);
       background: var(--color-bg);
       color: var(--color-text);
       line-height: 1.65;
-      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ===== Top nav (matches index) ===== */
+    /* ============ Page chrome (nav, page selector, footer) ============ */
     nav.site-nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(253, 250, 246, 0.85);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0.9rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(253, 250, 246, 0.92);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--color-border);
     }
     .nav-logo {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: var(--color-text);
-      text-decoration: none;
-      letter-spacing: -0.01em;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
+      font-family: var(--font-display); font-weight: 700; font-size: 1.25rem;
+      color: var(--color-text); text-decoration: none; letter-spacing: -0.01em;
+      display: inline-flex; align-items: center; gap: 0.55rem;
     }
     .nav-logo span { color: var(--color-accent); }
-    .nav-logo img { height: 34px; width: auto; display: block; }
-    .nav-links { display: flex; gap: 2rem; align-items: center; }
-    .nav-links a {
+    .nav-logo img { height: 32px; width: auto; display: block; }
+
+    /* ===== Page selector pill bar ===== */
+    .page-selector {
+      position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
+      background: rgba(253, 250, 246, 0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--color-border);
+      padding: 0.55rem 2rem;
+      display: flex; justify-content: center; align-items: center; gap: 0.4rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .page-selector::-webkit-scrollbar { display: none; }
+    .page-pill {
+      flex-shrink: 0;
+      padding: 0.45rem 1rem;
+      border-radius: 100px;
+      font-size: 0.85rem; font-weight: 600;
       color: var(--color-text-soft);
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover, .nav-links a.active { color: var(--color-text); }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.75rem;
-      border-radius: 100px;
-      font-family: var(--font-body);
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      cursor: pointer;
-      border: none;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 0.4rem;
       white-space: nowrap;
     }
-    .btn-primary { background: var(--color-accent); color: #fff; }
-    .btn-primary:hover {
-      background: var(--color-accent-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(224, 122, 95, 0.3);
-    }
-    .btn-outline {
-      background: transparent;
+    .page-pill:hover {
+      background: var(--color-surface);
       color: var(--color-text);
-      border: 1.5px solid var(--color-border);
+      border-color: var(--color-border);
     }
-    .btn-outline:hover {
-      border-color: var(--color-accent);
-      color: var(--color-accent);
+    .page-pill.active {
+      background: var(--color-accent);
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(224, 122, 95, 0.25);
     }
+    .page-pill .pill-icon { font-size: 0.95em; }
+    .page-pill.cta {
+      background: var(--color-text);
+      color: #fff;
+      margin-left: 0.5rem;
+    }
+    .page-pill.cta:hover { background: var(--color-text); color: #fff; transform: translateY(-1px); }
 
-    /* ===== Hero ===== */
+    /* Spacing for fixed bars */
+    main, header { padding-top: 112px; }
+
+    /* Tour hero */
     .tour-hero {
-      padding: 7rem 2rem 1rem;
+      padding: 1.5rem 2rem 0.5rem;
       text-align: center;
       position: relative;
     }
     .tour-hero .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1.1rem;
-      background: var(--color-sage-soft);
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.4rem 1rem; background: var(--color-sage-soft);
       border: 1px solid rgba(123, 160, 138, 0.2);
-      border-radius: 100px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--color-sage);
-      margin-bottom: 1.25rem;
+      border-radius: 100px; font-size: 0.82rem; font-weight: 600;
+      color: var(--color-sage); margin-bottom: 1rem;
     }
     .tour-hero h1 {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: clamp(2.25rem, 5vw, 3.5rem);
-      line-height: 1.1;
-      letter-spacing: -0.025em;
-      max-width: 720px;
-      margin: 0 auto;
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(2rem, 4.5vw, 3.25rem); line-height: 1.1;
+      letter-spacing: -0.025em; max-width: 720px; margin: 0 auto;
     }
     .tour-hero h1 em { font-style: italic; color: var(--color-accent); }
     .tour-hero p.lead {
-      font-size: clamp(1rem, 2vw, 1.1rem);
-      color: var(--color-text-soft);
-      max-width: 560px;
-      margin: 1rem auto 0;
+      font-size: clamp(0.95rem, 1.8vw, 1.08rem);
+      color: var(--color-text-soft); max-width: 540px;
+      margin: 0.85rem auto 0; line-height: 1.6;
     }
 
-    /* ===== Tour main layout ===== */
-    .tour-stage {
-      max-width: 1080px;
-      margin: 2.5rem auto 1rem;
-      padding: 0 2rem;
-    }
+    /* Tour stage */
+    .tour-stage { max-width: 1080px; margin: 1.75rem auto 1rem; padding: 0 2rem; }
     .tour-card {
       background: var(--color-surface);
       border: 1px solid var(--color-border);
       border-radius: 28px;
-      padding: 3rem 3rem;
+      padding: 2.5rem 3rem;
       box-shadow: var(--shadow-soft);
       display: grid;
       grid-template-columns: minmax(260px, 320px) 1fr;
-      gap: 3.5rem;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
+      gap: 3.5rem; align-items: center;
+      position: relative; overflow: hidden;
     }
     .tour-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--color-accent), var(--color-sage), var(--color-plum));
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-sage), #8B6F8E);
     }
-
     .step-counter {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--color-accent);
-      margin-bottom: 0.5rem;
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--color-accent); margin-bottom: 0.4rem;
     }
     .step-title {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      line-height: 1.2;
-      letter-spacing: -0.015em;
-      margin-bottom: 1rem;
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(1.4rem, 2.8vw, 1.95rem);
+      line-height: 1.2; letter-spacing: -0.015em; margin-bottom: 0.85rem;
     }
-    .step-body {
-      color: var(--color-text-soft);
-      font-size: 1.02rem;
-      line-height: 1.75;
-    }
+    .step-body { color: var(--color-text-soft); font-size: 0.98rem; line-height: 1.7; }
     .step-body strong { color: var(--color-text); font-weight: 600; }
+    .step-content { min-height: 220px; animation: stepFade 0.35s ease both; }
+    @keyframes stepFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-    .step-content { min-height: 240px; }
-    .step-content[hidden] { display: none; }
-    .step-content {
-      animation: stepFade 0.35s ease both;
-    }
-    @keyframes stepFade {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ===== Controls (prev/next/dots) ===== */
+    /* Controls */
     .tour-controls {
-      max-width: 1080px;
-      margin: 1.5rem auto 0;
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      justify-content: space-between;
+      max-width: 1080px; margin: 1.25rem auto 0; padding: 0 2rem;
+      display: flex; align-items: center; gap: 1rem; justify-content: space-between;
     }
     .arrow-btn {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
+      width: 50px; height: 50px; border-radius: 50%;
       border: 1.5px solid var(--color-border);
-      background: var(--color-surface);
-      color: var(--color-text);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s ease;
-      font-family: var(--font-body);
-      flex-shrink: 0;
+      background: var(--color-surface); color: var(--color-text);
+      cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+      transition: all 0.2s; flex-shrink: 0;
     }
     .arrow-btn:hover:not(:disabled) {
-      border-color: var(--color-accent);
-      color: var(--color-accent);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 14px rgba(224, 122, 95, 0.18);
+      border-color: var(--color-accent); color: var(--color-accent);
+      transform: translateY(-2px); box-shadow: 0 4px 14px rgba(224, 122, 95, 0.18);
     }
-    .arrow-btn:disabled {
-      opacity: 0.35;
-      cursor: not-allowed;
-    }
-    .arrow-btn svg { width: 18px; height: 18px; }
+    .arrow-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    .arrow-btn svg { width: 16px; height: 16px; }
 
-    .progress-bar-wrap {
-      flex: 1;
-      max-width: 520px;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      align-items: center;
-    }
-    .progress-bar {
-      width: 100%;
-      height: 4px;
-      background: var(--color-border);
-      border-radius: 100px;
-      overflow: hidden;
-    }
+    .progress-bar-wrap { flex: 1; max-width: 520px; display: flex; flex-direction: column; gap: 0.55rem; align-items: center; }
+    .progress-bar { width: 100%; height: 4px; background: var(--color-border); border-radius: 100px; overflow: hidden; }
     .progress-bar-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--color-accent), var(--color-sage));
-      border-radius: 100px;
-      transition: width 0.35s ease;
-      width: 5%;
+      height: 100%; background: linear-gradient(90deg, var(--color-accent), var(--color-sage));
+      border-radius: 100px; transition: width 0.35s ease; width: 9%;
     }
-    .dots {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--color-border);
-      border: none;
-      padding: 0;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
+    .dots { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-border); border: none; padding: 0; cursor: pointer; transition: all 0.2s; }
     .dot:hover { background: var(--color-text-light); }
-    .dot.active {
-      background: var(--color-accent);
-      width: 22px;
-      border-radius: 4px;
-    }
+    .dot.active { background: var(--color-accent); width: 22px; border-radius: 4px; }
     .dot.visited { background: var(--color-sage); }
 
-    /* ===== Phone mockup ===== */
+    /* ============ PHONE MOCKUP ============ */
     .phone-frame {
       background: #1a1a1a;
       border-radius: 38px;
-      padding: 10px;
+      padding: 9px;
       box-shadow: 0 18px 50px rgba(44, 40, 37, 0.18), 0 4px 14px rgba(44, 40, 37, 0.08);
       position: relative;
       margin: 0 auto;
@@ -326,406 +237,472 @@
       aspect-ratio: 9 / 19;
     }
     .phone-frame::before {
-      content: '';
-      position: absolute;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 22px;
-      background: #1a1a1a;
-      border-radius: 14px;
-      z-index: 3;
+      content: ''; position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+      width: 78px; height: 22px; background: #1a1a1a; border-radius: 14px; z-index: 3;
     }
     .phone-screen {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       border-radius: 30px;
-      background: #FBF1E5;
+      background: var(--app-cream);
       overflow: hidden;
       position: relative;
-      padding: 48px 14px 18px;
-      font-size: 11px;
-    }
-    .phone-screen.dark { background: #1a1a1a; color: #fff; }
-
-    /* common UI bits inside phone */
-    .phone-h {
+      font-size: 10px;
+      color: var(--app-black);
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
+      flex-direction: column;
     }
-    .phone-greeting {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 18px;
+    .ps-statusbar { height: 28px; flex-shrink: 0; }
+    .ps-content {
+      flex: 1;
+      padding: 10px 14px 6px;
+      overflow: hidden;
+    }
+    /* Fake tab bar */
+    .ps-tabbar {
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(0,0,0,0.06);
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      padding: 6px 0 8px;
+      height: 44px;
+    }
+    .ps-tab {
+      display: flex; flex-direction: column; align-items: center; gap: 2px;
+      font-size: 8px; color: rgba(0,0,0,0.4); font-weight: 600;
+    }
+    .ps-tab .ps-tab-icon { font-size: 12px; line-height: 1; }
+    .ps-tab.active { color: var(--app-coral); }
+
+    /* Common screen elements */
+    .ps-h-row { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .ps-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--app-coral-light);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 800; font-size: 12px;
+      color: var(--app-coral); flex-shrink: 0;
+    }
+    .ps-avatar.plum { background: rgba(139, 111, 142, 0.12); color: #8B6F8E; }
+    .ps-greeting {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: 17px; letter-spacing: -0.01em;
+      color: var(--app-black); line-height: 1.1;
+    }
+    .ps-title {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: 22px; color: var(--app-black); margin-bottom: 10px;
       letter-spacing: -0.01em;
     }
-    .phone-avatar {
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      background: var(--color-accent);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-weight: 700;
-      font-size: 11px;
-    }
-    .phone-card {
-      background: #fff;
-      border-radius: 14px;
-      padding: 12px;
-      margin-bottom: 8px;
-      box-shadow: 0 1px 8px rgba(44,40,37,0.04);
-    }
-    .phone-pill {
-      display: inline-flex;
-      padding: 3px 8px;
-      border-radius: 100px;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-    .pill-coral { background: var(--color-accent-soft); color: var(--color-accent); }
-    .pill-sage { background: var(--color-sage-soft); color: var(--color-sage); }
-    .pill-red { background: rgba(217,83,79,0.12); color: var(--color-red); }
-    .pill-green { background: rgba(92,184,92,0.12); color: var(--color-green); }
-    .pill-dark { background: rgba(255,255,255,0.12); color: #fff; }
 
-    .phone-btn-primary {
-      background: var(--color-accent);
-      color: #fff;
-      border-radius: 12px;
-      padding: 10px 14px;
-      text-align: center;
-      font-weight: 700;
-      font-size: 12px;
-      box-shadow: 0 4px 12px rgba(224,122,95,0.32);
+    .ps-card {
+      background: #fff; border-radius: 14px; padding: 10px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+      margin-bottom: 7px;
     }
-    .phone-btn-outline {
-      border: 1.5px solid var(--color-accent);
-      color: var(--color-accent);
-      border-radius: 100px;
-      padding: 5px 10px;
-      font-weight: 700;
-      font-size: 10px;
+    .ps-card-lg { border-radius: 18px; padding: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+
+    .ps-pill {
+      display: inline-flex; align-items: center; gap: 3px;
+      padding: 2px 8px; border-radius: 100px;
+      font-size: 8.5px; font-weight: 700; letter-spacing: 0.04em;
+    }
+    .pill-coral { background: var(--app-coral-light); color: var(--app-coral); }
+    .pill-sage { background: var(--app-sage-light); color: var(--app-sage); }
+    .pill-green { background: var(--app-goal-green-light); color: var(--app-goal-green); }
+    .pill-red { background: rgba(211, 47, 47, 0.12); color: var(--app-red); }
+    .pill-white { background: #fff; color: var(--app-black); }
+
+    .ps-btn-primary {
+      background: var(--app-coral); color: #fff;
+      border-radius: 12px; padding: 9px 12px;
+      text-align: center; font-weight: 800; font-size: 12px;
+      box-shadow: 0 4px 12px rgba(224, 120, 80, 0.32);
+      display: flex; align-items: center; justify-content: center; gap: 5px;
+    }
+    .ps-btn-outline {
+      border: 1.5px solid var(--app-coral);
+      color: var(--app-coral);
+      border-radius: 10px; padding: 7px 10px;
+      font-weight: 700; font-size: 10px;
       background: #fff;
-      display: inline-block;
+      display: inline-flex; align-items: center; justify-content: center; gap: 4px;
     }
-    .phone-btn-fill {
-      background: var(--color-accent);
-      color: #fff;
-      border-radius: 100px;
-      padding: 5px 10px;
-      font-weight: 700;
-      font-size: 10px;
-      display: inline-block;
+    .ps-btn-fill {
+      background: var(--app-coral); color: #fff;
+      border-radius: 8px; padding: 4px 9px;
+      font-weight: 700; font-size: 9px;
+      display: inline-flex; align-items: center; gap: 3px;
     }
 
-    /* highlight glow */
-    .highlight {
-      box-shadow: 0 0 0 3px rgba(224,122,95,0.45), 0 0 0 6px rgba(224,122,95,0.18);
+    /* SVG shield style */
+    .shield-svg { display: block; }
+
+    /* Highlight pulse */
+    .hl {
+      box-shadow: 0 0 0 2.5px rgba(224, 120, 80, 0.55), 0 0 0 5px rgba(224, 120, 80, 0.18);
       animation: pulse 1.8s ease-in-out infinite;
       border-radius: 14px;
+      position: relative; z-index: 2;
     }
-    .highlight-pill {
-      box-shadow: 0 0 0 3px rgba(224,122,95,0.5), 0 0 0 6px rgba(224,122,95,0.2);
-      animation: pulse 1.8s ease-in-out infinite;
-      border-radius: 100px;
-    }
+    .hl-pill { border-radius: 100px !important; animation: pulse 1.8s ease-in-out infinite;
+      box-shadow: 0 0 0 2.5px rgba(224, 120, 80, 0.55), 0 0 0 5px rgba(224, 120, 80, 0.18); }
     @keyframes pulse {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.04); }
+      50% { transform: scale(1.03); }
     }
 
-    /* shields */
-    .shield-row {
-      display: flex;
-      gap: 5px;
-      margin-top: 6px;
-    }
-    .shield {
-      width: 18px;
-      height: 21px;
-      background: transparent;
-      border: 1.5px solid var(--color-border);
-      border-radius: 4px 4px 7px 7px / 4px 4px 9px 9px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 9px;
-      color: var(--color-text-light);
-    }
-    .shield.done {
-      background: var(--color-accent);
-      border-color: var(--color-accent);
-      color: #fff;
-    }
-    .shield.live {
-      border-color: var(--color-accent);
-      border-style: dashed;
-      color: var(--color-accent);
-    }
-
-    /* Apple Watch mock */
-    .watch {
-      width: 100px;
-      height: 120px;
-      margin: 12px auto;
-      background: #1a1a1a;
-      border-radius: 22px;
-      padding: 8px;
-      position: relative;
-    }
-    .watch::before, .watch::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 36px;
-      height: 8px;
-      background: #2a2a2a;
-      border-radius: 4px;
-    }
-    .watch::before { top: -10px; border-radius: 8px 8px 4px 4px; }
-    .watch::after { bottom: -10px; border-radius: 4px 4px 8px 8px; }
-    .watch-screen {
-      background: #000;
-      border-radius: 14px;
-      width: 100%; height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      gap: 4px;
-      font-size: 9px;
-    }
-    .watch-label { color: #aaa; font-size: 8px; letter-spacing: 0.05em; }
-    .watch-activity { color: var(--color-accent); font-weight: 700; font-size: 11px; }
-    .watch-start {
-      background: #2ecc71;
-      color: #fff;
-      padding: 4px 10px;
-      border-radius: 100px;
-      font-weight: 700;
-      font-size: 9px;
-      margin-top: 2px;
-    }
-
-    /* Logo screen (step 1) */
+    /* Specific screens */
+    /* --- Welcome / Splash --- */
     .splash {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      text-align: center;
-      padding: 0 10px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      height: 100%; text-align: center; padding: 0 14px;
     }
-    .splash img { width: 80px; margin-bottom: 14px; }
+    .splash img { width: 70px; margin-bottom: 14px; }
     .splash h2 {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 18px;
-      margin-bottom: 4px;
+      font-family: var(--font-display); font-weight: 800;
+      font-size: 18px; color: var(--app-black); margin-bottom: 5px;
+      letter-spacing: -0.01em;
     }
-    .splash h2 span { color: var(--color-accent); }
-    .splash p { font-size: 10px; color: var(--color-text-soft); }
+    .splash h2 .accent { color: var(--app-coral); }
+    .splash p { font-size: 11px; color: rgba(26,26,26,0.7); line-height: 1.45; }
 
-    /* Finish screen (step 20) */
-    .check-circle {
-      width: 70px; height: 70px;
-      border-radius: 50%;
-      background: rgba(92,184,92,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 14px;
-      color: var(--color-green);
-      font-size: 36px;
-      font-weight: 700;
+    /* --- HomeInactive: "Ready to Commit?" --- */
+    .home-hero {
+      text-align: center; padding: 18px 4px 8px;
     }
+    .home-hero-circle {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--app-coral-light);
+      margin: 0 auto 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--app-coral); font-size: 24px;
+    }
+    .home-hero h3 {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: 17px; color: var(--app-black); letter-spacing: -0.01em; margin-bottom: 4px;
+    }
+    .home-hero p { font-size: 10px; color: rgba(26,26,26,0.65); line-height: 1.5; padding: 0 8px; }
+    .feature-row {
+      display: flex; align-items: center; gap: 8px;
+      padding: 6px 4px; font-size: 9.5px; color: rgba(26,26,26,0.7);
+    }
+    .feature-row .fr-icon { width: 14px; color: var(--app-coral); font-size: 11px; flex-shrink: 0; }
 
-    /* Flow diagram (steps 4, 6) */
-    .flow {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      padding-top: 8px;
+    /* --- Active pledge "THIS WEEK" --- */
+    .this-week .tw-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 6px;
     }
-    .flow-step {
-      background: #fff;
-      border-radius: 12px;
-      padding: 6px 10px;
-      font-size: 10px;
-      font-weight: 600;
-      width: 130px;
-      text-align: center;
-      box-shadow: 0 1px 5px rgba(44,40,37,0.05);
+    .this-week .tw-label { font-size: 8.5px; font-weight: 700; color: rgba(26,26,26,0.4); letter-spacing: 0.12em; }
+    .this-week .tw-date { font-size: 11px; font-weight: 600; color: var(--app-black); }
+    .shield-row { display: flex; gap: 4px; justify-content: space-between; margin-top: 4px; }
+    .at-risk {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 7px 10px; background: rgba(211, 47, 47, 0.08);
+      border-radius: 10px; margin-top: 6px;
     }
-    .flow-step.accent { background: var(--color-accent); color: #fff; }
-    .flow-arrow {
-      color: var(--color-text-light);
-      font-size: 14px;
+    .at-risk .label { font-size: 9px; font-weight: 700; color: var(--app-red); letter-spacing: 0.06em; }
+    .at-risk .amount { font-family: var(--font-display); font-weight: 800; font-size: 14px; color: var(--app-red); }
+    .daily-row {
+      display: flex; align-items: center; gap: 7px;
+      padding: 5px 4px; border-bottom: 1px solid rgba(0,0,0,0.04);
     }
+    .daily-row:last-child { border-bottom: none; }
+    .daily-row.today { background: rgba(224, 120, 80, 0.06); border-radius: 6px; padding: 5px 6px; }
+    .daily-day { font-size: 9px; font-weight: 700; color: var(--app-black); letter-spacing: 0.06em; width: 22px; flex-shrink: 0; }
+    .daily-bar {
+      flex: 1; height: 5px; background: rgba(0,0,0,0.06); border-radius: 100px; overflow: hidden;
+    }
+    .daily-bar .fill { height: 100%; border-radius: 100px; }
+    .daily-min { font-size: 8.5px; font-weight: 600; color: rgba(26,26,26,0.6); width: 38px; text-align: right; flex-shrink: 0; }
 
-    /* Wallet (steps 14-15, 17) */
+    /* --- Apple Health flow + watch --- */
+    .health-screen { display: flex; flex-direction: column; align-items: center; padding-top: 6px; }
+    .health-screen h3 {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: 13px; color: var(--app-black); margin-bottom: 10px; text-align: center;
+    }
+    .watch-mock {
+      width: 95px; height: 118px;
+      background: var(--app-black);
+      border-radius: 20px; padding: 7px;
+      position: relative; margin-bottom: 9px;
+    }
+    .watch-mock::before, .watch-mock::after {
+      content: ''; position: absolute; left: 50%; transform: translateX(-50%);
+      width: 30px; height: 7px; background: #2a2a2a;
+    }
+    .watch-mock::before { top: -8px; border-radius: 6px 6px 3px 3px; }
+    .watch-mock::after { bottom: -8px; border-radius: 3px 3px 6px 6px; }
+    .watch-screen {
+      background: #000; border-radius: 12px; width: 100%; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: #fff; gap: 2px; padding: 4px;
+    }
+    .watch-screen .ws-label { color: rgba(255,255,255,0.6); font-size: 7px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .watch-screen .ws-fig { color: var(--app-coral); font-size: 17px; line-height: 1; }
+    .watch-screen .ws-name { color: #fff; font-weight: 700; font-size: 9.5px; }
+    .watch-screen .ws-start {
+      background: var(--app-goal-green); color: #fff;
+      padding: 3px 11px; border-radius: 100px;
+      font-weight: 800; font-size: 8.5px; margin-top: 2px;
+    }
+    .health-flow {
+      display: flex; flex-direction: column; align-items: center; gap: 4px; width: 100%;
+    }
+    .health-flow .step {
+      background: #fff; border-radius: 10px;
+      padding: 5px 12px; font-size: 9px; font-weight: 700; color: var(--app-black);
+      width: 165px; text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+    }
+    .health-flow .step.accent { background: var(--app-coral); color: #fff; }
+    .health-flow .arrow { color: rgba(0,0,0,0.3); font-size: 12px; line-height: 1; }
+
+    /* --- Friends --- */
+    .friends-banner {
+      background: var(--app-coral-light); border-radius: 8px;
+      padding: 5px 8px; font-size: 9px; font-weight: 700; color: var(--app-coral);
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 6px;
+    }
+    .friends-actions { display: flex; gap: 5px; margin-bottom: 7px; }
+    .friends-actions > * { flex: 1; }
+    .friend-card {
+      background: #fff; border-radius: 12px;
+      padding: 8px 10px; margin-bottom: 5px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+    }
+    .friend-card.has-poke { border: 1.5px solid var(--app-coral-medium); padding: 7px 9px; }
+    .friend-card.has-poke .inline-poke {
+      background: var(--app-coral-light);
+      border-radius: 7px;
+      padding: 4px 6px; font-size: 8px; color: var(--app-coral); font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .friend-card .fr-head { display: flex; align-items: center; gap: 6px; }
+    .friend-card .fr-name { font-weight: 700; font-size: 10px; color: var(--app-black); }
+    .friend-card .fr-progress { font-size: 8.5px; color: rgba(26,26,26,0.5); }
+    .friend-card .fr-bell { color: var(--app-coral); font-size: 11px; }
+    .friend-card .fr-bell.off { color: rgba(26,26,26,0.3); }
+    .friend-card .fr-shields { display: flex; gap: 3px; margin-top: 5px; }
+
+    /* --- History --- */
+    .hist-stats {
+      display: flex; background: #fff; border-radius: 12px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.04); padding: 9px 4px;
+      margin-bottom: 7px;
+    }
+    .hist-stats .col { flex: 1; text-align: center; }
+    .hist-stats .col + .col { border-left: 1px solid rgba(0,0,0,0.06); }
+    .hist-stats .value { font-family: var(--font-display); font-weight: 800; font-size: 13px; color: var(--app-black); line-height: 1.1; }
+    .hist-stats .value.coral { color: var(--app-coral); }
+    .hist-stats .label { font-size: 8px; font-weight: 700; color: rgba(0,0,0,0.4); letter-spacing: 0.06em; text-transform: uppercase; }
+    .week-row {
+      display: flex; align-items: center; gap: 8px;
+      background: #fff; border-radius: 11px;
+      padding: 7px 9px; margin-bottom: 4px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .week-icon {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--app-coral-light); color: var(--app-coral);
+      display: flex; align-items: center; justify-content: center; font-size: 13px;
+      flex-shrink: 0;
+    }
+    .week-icon.green { background: var(--app-goal-green-light); color: var(--app-goal-green); }
+    .week-row .info { flex: 1; min-width: 0; }
+    .week-row .title { font-weight: 700; font-size: 10px; color: var(--app-black); }
+    .week-row .sub { font-size: 8.5px; color: rgba(26,26,26,0.5); }
+    .week-row .sub.coral { color: var(--app-coral); font-weight: 600; }
+
+    /* --- Wallet --- */
     .wallet-hero {
-      background: #1a1a1a;
-      color: #fff;
-      border-radius: 16px;
-      padding: 14px;
-      position: relative;
-      overflow: hidden;
+      background: var(--app-black); color: #fff;
+      border-radius: 16px; padding: 12px; position: relative; overflow: hidden;
+      margin-bottom: 7px;
     }
     .wallet-hero::after {
-      content: '🛡';
-      position: absolute;
-      right: -8px; bottom: -10px;
-      font-size: 70px;
-      opacity: 0.08;
+      content: '🛡'; position: absolute; right: -6px; bottom: -10px;
+      font-size: 55px; opacity: 0.06;
+    }
+    .wallet-hero .wh-label { font-size: 8.5px; font-weight: 700; color: rgba(255,255,255,0.55); letter-spacing: 0.12em; }
+    .wallet-hero .wh-value { font-family: var(--font-display); font-weight: 800; font-size: 28px; line-height: 1; margin: 2px 0; color: #fff; }
+    .wallet-hero .wh-sub { font-size: 9px; color: rgba(255,255,255,0.55); margin-bottom: 9px; }
+    .wallet-hero .wh-actions { display: flex; gap: 5px; }
+    .wallet-hero .wh-pill-coral {
+      background: var(--app-coral); color: #fff;
+      padding: 4px 10px; border-radius: 100px; font-weight: 700; font-size: 9px;
+      display: inline-flex; align-items: center; gap: 3px;
+    }
+    .wallet-hero .wh-pill-white {
+      background: #fff; color: var(--app-black);
+      padding: 4px 10px; border-radius: 100px; font-weight: 700; font-size: 9px;
+      display: inline-flex; align-items: center; gap: 3px;
+    }
+    .wallet-hero .wh-divider { height: 1px; background: rgba(255,255,255,0.12); margin: 8px 0 7px; }
+    .wallet-hero .wh-stats { display: flex; }
+    .wallet-hero .wh-stats .col { flex: 1; }
+    .wallet-hero .wh-stats .label { font-size: 7.5px; color: rgba(255,255,255,0.45); font-weight: 700; letter-spacing: 0.08em; }
+    .wallet-hero .wh-stats .v { font-family: var(--font-display); font-weight: 800; font-size: 11px; color: #fff; line-height: 1.1; }
+    .lifetime-row { display: flex; gap: 5px; }
+    .lifetime-card {
+      flex: 1; background: #fff; border-radius: 10px;
+      padding: 7px 4px; text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .lifetime-card .lc-icon { font-size: 12px; margin-bottom: 1px; }
+    .lifetime-card .lc-val { font-family: var(--font-display); font-weight: 800; font-size: 12px; color: var(--app-black); line-height: 1.1; }
+    .lifetime-card .lc-label { font-size: 7.5px; color: rgba(0,0,0,0.45); margin-top: 1px; }
+
+    /* --- Dispute --- */
+    .dispute-hdr { font-family: var(--font-display); font-weight: 800; font-size: 14px; margin-bottom: 8px; color: var(--app-black); }
+    .dispute-result {
+      background: #fff; border-radius: 16px; padding: 14px;
+      text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 7px;
+    }
+    .dispute-result .x-circle {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(211, 47, 47, 0.15);
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--app-red); font-size: 20px; font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .dispute-result .gm { font-family: var(--font-display); font-weight: 800; font-size: 13px; color: var(--app-black); }
+    .dispute-result .sub { font-size: 9px; color: rgba(0,0,0,0.5); margin-top: 1px; }
+    .dispute-window {
+      background: var(--app-coral-light); border-radius: 12px;
+      padding: 9px;
+    }
+    .dispute-window .dw-head { display: flex; gap: 6px; align-items: center; font-size: 10px; }
+    .dispute-window .dw-head .clock { color: var(--app-coral); font-size: 12px; }
+    .dispute-window .dw-head strong { font-weight: 700; color: var(--app-black); }
+    .dispute-window .dw-help { font-size: 8.5px; color: rgba(0,0,0,0.55); margin: 5px 0 7px; line-height: 1.5; }
+    .dispute-btn {
+      border: 1.5px solid var(--app-coral); color: var(--app-coral);
+      background: #fff; border-radius: 10px; padding: 7px;
+      font-weight: 700; font-size: 10px;
+      display: flex; align-items: center; justify-content: center; gap: 4px;
     }
 
-    /* Redemption tiers (steps 18-19) */
-    .redeem-tab {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 8px;
+    /* --- Redeem --- */
+    .redeem-hdr {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;
     }
-    .redeem-tab > div {
-      flex: 1;
-      text-align: center;
-      padding: 6px;
-      border-radius: 8px;
-      font-size: 10px;
-      font-weight: 700;
-      background: #f0e8dc;
-      color: var(--color-text-soft);
+    .redeem-hdr .title { font-family: var(--font-display); font-weight: 800; font-size: 13px; }
+    .redeem-cancel {
+      background: #fff; color: var(--app-coral);
+      padding: 3px 9px; border-radius: 100px; font-weight: 700; font-size: 9px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
     }
-    .redeem-tab > div.active {
-      background: var(--color-accent);
-      color: #fff;
+    .redeem-balance { font-size: 10px; font-weight: 700; margin-bottom: 8px; }
+    .redeem-balance .sage { color: var(--app-sage); }
+    .seg-control {
+      display: flex; padding: 3px;
+      background: rgba(0,0,0,0.06); border-radius: 18px;
+      margin-bottom: 9px;
     }
+    .seg-control .seg {
+      flex: 1; text-align: center; padding: 5px;
+      font-size: 10px; font-weight: 700; color: var(--app-black);
+      border-radius: 14px;
+    }
+    .seg-control .seg.active { background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
     .gift-tier {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px;
-      background: #fff;
-      border-radius: 10px;
-      margin-bottom: 5px;
-      font-size: 10px;
+      display: flex; align-items: center; gap: 7px;
+      padding: 7px; background: #fff; border-radius: 10px;
+      margin-bottom: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
-    .gift-icon {
-      width: 26px; height: 26px;
-      background: var(--color-accent-soft);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-accent);
-      font-size: 14px;
+    .gift-tier.locked { opacity: 0.55; }
+    .gift-tier .gt-icon {
+      width: 26px; height: 26px; border-radius: 8px;
+      background: var(--app-coral); color: #fff;
+      display: flex; align-items: center; justify-content: center; font-size: 13px;
+      flex-shrink: 0;
     }
+    .gift-tier.locked .gt-icon { background: rgba(0,0,0,0.15); }
+    .gift-tier .gt-name { font-size: 10px; font-weight: 700; color: var(--app-black); }
+    .gift-tier .gt-cost { font-size: 8.5px; color: rgba(0,0,0,0.5); }
+    .gift-tier .gt-action { margin-left: auto; font-size: 9px; color: var(--app-coral); font-weight: 700; }
+    .gift-tier.locked .gt-action { color: rgba(0,0,0,0.4); }
 
-    /* ===== Outro / CTA ===== */
-    .tour-outro {
-      max-width: 720px;
-      margin: 4rem auto;
-      padding: 0 2rem;
-      text-align: center;
+    /* --- Finish --- */
+    .finish {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      height: 100%; text-align: center; padding: 0 16px;
     }
+    .finish .check-circle {
+      width: 68px; height: 68px; border-radius: 50%;
+      background: var(--app-goal-green-light);
+      color: var(--app-goal-green); font-size: 32px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 12px;
+    }
+    .finish h3 { font-family: var(--font-display); font-weight: 800; font-size: 17px; color: var(--app-black); margin-bottom: 4px; }
+    .finish p { font-size: 10px; color: rgba(0,0,0,0.55); margin-bottom: 12px; }
+
+    /* Outro CTA */
+    .tour-outro { max-width: 720px; margin: 3rem auto; padding: 0 2rem; text-align: center; }
     .outro-card {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: 24px;
-      padding: 3rem 2.5rem;
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
+      background: var(--color-surface); border: 1px solid var(--color-border);
+      border-radius: 24px; padding: 2.5rem 2rem;
+      box-shadow: var(--shadow-soft); position: relative; overflow: hidden;
     }
     .outro-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--color-accent), var(--color-sage), var(--color-plum));
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-sage), #8B6F8E);
     }
     .outro-card h2 {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      letter-spacing: -0.015em;
-      margin-bottom: 0.75rem;
+      font-family: var(--font-display); font-weight: 700;
+      font-size: clamp(1.4rem, 3vw, 1.85rem); letter-spacing: -0.02em; margin-bottom: 0.6rem;
     }
-    .outro-card p { color: var(--color-text-soft); margin-bottom: 1.75rem; }
+    .outro-card p { color: var(--color-text-soft); margin-bottom: 1.5rem; }
     .outro-cta { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.5rem; border-radius: 100px;
+      font-family: var(--font-body); font-weight: 600; font-size: 0.92rem;
+      text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--color-accent); color: #fff; }
+    .btn-primary:hover { background: var(--color-accent-hover); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(224, 122, 95, 0.3); }
+    .btn-outline { background: transparent; color: var(--color-text); border: 1.5px solid var(--color-border); }
+    .btn-outline:hover { border-color: var(--color-accent); color: var(--color-accent); }
 
-    /* ===== Footer ===== */
     footer {
-      border-top: 1px solid var(--color-border);
-      padding: 2.5rem 2rem;
+      border-top: 1px solid var(--color-border); padding: 2.5rem 2rem;
     }
     .footer-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
+      max-width: 1000px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
     }
     .footer-copy { color: var(--color-text-light); font-size: 0.85rem; }
     .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    .footer-links a {
-      color: var(--color-text-light);
-      font-size: 0.85rem;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
+    .footer-links a { color: var(--color-text-light); font-size: 0.85rem; text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--color-text); }
 
-    /* ===== Responsive ===== */
     @media (max-width: 880px) {
-      .tour-card {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 2rem 1.5rem;
-      }
+      .tour-card { grid-template-columns: 1fr; gap: 1.75rem; padding: 1.75rem 1.5rem; }
       .phone-frame { width: 240px; }
       .step-content { min-height: 0; }
     }
     @media (max-width: 768px) {
-      nav.site-nav { padding: 0.75rem 1rem; }
-      .nav-links { gap: 1rem; }
-      .nav-links a:not(.btn) { display: none; }
-      .nav-logo { font-size: 1.1rem; gap: 0.4rem; }
+      nav.site-nav { padding: 0.7rem 1rem; }
+      .nav-logo { font-size: 1.05rem; gap: 0.4rem; }
       .nav-logo img { height: 28px; }
-      .nav-links .btn { padding: 0.55rem 1rem; font-size: 0.82rem; }
-      .tour-hero { padding: 6rem 1rem 0.5rem; }
+      .page-selector { top: 56px; padding: 0.45rem 0.75rem; gap: 0.3rem; justify-content: flex-start; }
+      .page-pill { padding: 0.4rem 0.85rem; font-size: 0.8rem; }
+      main, header { padding-top: 102px; }
       .tour-stage, .tour-controls { padding: 0 1rem; }
-      .tour-card { padding: 1.5rem 1.25rem; }
-      .arrow-btn { width: 44px; height: 44px; }
-      .dot { width: 7px; height: 7px; }
-      .dot.active { width: 18px; }
+      .arrow-btn { width: 42px; height: 42px; }
       .footer-inner { justify-content: center; text-align: center; }
     }
-
-    @media (max-width: 400px) {
-      .nav-links .btn { padding: 0.5rem 0.85rem; font-size: 0.78rem; }
-      .nav-logo { font-size: 1rem; }
-      .nav-logo img { height: 26px; }
-      .phone-frame { width: 220px; }
-    }
-
     @media (prefers-reduced-motion: reduce) {
-      .step-content, .highlight, .highlight-pill, .progress-bar-fill {
-        animation: none !important;
-        transition: none !important;
-      }
+      .step-content, .hl, .hl-pill, .progress-bar-fill { animation: none !important; transition: none !important; }
     }
   </style>
 </head>
@@ -736,30 +713,30 @@
       <img src="workout-pledge-logo-2.svg" alt="Workout Pledge shield logo" />
       Workout<span>Pledge</span>
     </a>
-    <div class="nav-links">
-      <a href="index.html#how-it-works">How It Works</a>
-      <a href="tour.html" class="active">Tour</a>
-      <a href="faq.html">FAQ</a>
-      <a href="index.html#cta" class="btn btn-primary">Join Waitlist</a>
-    </div>
   </nav>
 
+  <div class="page-selector" role="tablist" aria-label="Page navigation">
+    <a href="index.html" class="page-pill"><span class="pill-icon">🏠</span> Home</a>
+    <a href="tour.html" class="page-pill active" aria-current="page"><span class="pill-icon">🎬</span> Tour</a>
+    <a href="faq.html" class="page-pill"><span class="pill-icon">💬</span> FAQ</a>
+    <a href="privacy-policy.html" class="page-pill"><span class="pill-icon">🔒</span> Privacy</a>
+    <a href="terms-of-service.html" class="page-pill"><span class="pill-icon">📜</span> Terms</a>
+    <a href="index.html#cta" class="page-pill cta">Join Waitlist</a>
+  </div>
+
   <header class="tour-hero">
-    <div class="eyebrow">🎬 20-step walkthrough</div>
+    <div class="eyebrow">🎬 Walkthrough</div>
     <h1>Take the <em>Tour.</em></h1>
-    <p class="lead">Click through the same intro you'll see when you open the app for the first time. About 90 seconds, no sign-up required.</p>
+    <p class="lead">A quick click-through of how Workout Pledge actually works — same screens you'll see when you open the app.</p>
   </header>
 
-  <main class="tour-stage">
+  <main class="tour-stage" style="padding-top: 0;">
     <article class="tour-card" id="tourCard" aria-live="polite">
-      <!-- Phone mockup column (filled by JS) -->
       <div id="phoneSlot"></div>
-
-      <!-- Copy column -->
       <div>
-        <div class="step-counter" id="stepCounter">Step 1 of 20</div>
-        <h2 class="step-title" id="stepTitle">Welcome to Workout Pledge!</h2>
-        <p class="step-body" id="stepBody">Let's take a quick tour so you know how the app works before you start your first pledge. It only takes a minute.</p>
+        <div class="step-counter" id="stepCounter">Step 1 of 11</div>
+        <h2 class="step-title" id="stepTitle">Welcome</h2>
+        <p class="step-body" id="stepBody">Loading…</p>
       </div>
     </article>
   </main>
@@ -780,7 +757,7 @@
   <section class="tour-outro">
     <div class="outro-card">
       <h2 id="outroTitle">That's the tour.</h2>
-      <p id="outroBody">Tap below to join the waitlist — we'll let you know the moment you can set up your first pledge.</p>
+      <p>Join the waitlist and we'll let you know the moment you can set up your first pledge.</p>
       <div class="outro-cta">
         <a href="index.html#cta" class="btn btn-primary">Join the Waitlist</a>
         <a href="faq.html" class="btn btn-outline">Read the FAQ</a>
@@ -802,269 +779,418 @@
   </footer>
 
   <script>
-    // ===== Phone screen builders =====
-    // Returns the inner HTML for the phone screen for a given visual key.
-    // The "hl" param is a CSS class to apply to the highlighted element.
-    function buildScreen(kind, hl) {
-      const homeInactive = `
-        <div class="phone-h">
-          <div>
-            <div style="font-size:9px;color:var(--color-text-soft);font-weight:600;letter-spacing:0.05em;">HOME</div>
-            <div class="phone-greeting">Hey, Alex! 👋</div>
-          </div>
-          <div class="phone-avatar">🔥</div>
-        </div>
-        <div class="phone-card">
-          <div style="font-size:9px;color:var(--color-text-light);font-weight:700;letter-spacing:0.08em;margin-bottom:6px;">NEXT WEEK</div>
-          <div style="font-family:var(--font-display);font-weight:700;font-size:15px;line-height:1.25;margin-bottom:8px;">Ready to commit?</div>
-          <div style="font-size:10px;color:var(--color-text-soft);line-height:1.5;margin-bottom:10px;">Lock in your goal and pledge before Monday.</div>
-          <div class="phone-btn-primary ${hl === 'createBtn' ? 'highlight' : ''}">🛡 Create My Pledge</div>
-        </div>
-        <div class="phone-card" style="opacity:0.7;">
-          <div style="font-size:9px;font-weight:700;color:var(--color-sage);letter-spacing:0.08em;margin-bottom:4px;">TIP</div>
-          <div style="font-size:10px;line-height:1.5;">The harder your goal, the bigger the share of the pot.</div>
-        </div>`;
-
-      const homeActive = `
-        <div class="phone-h">
-          <div>
-            <div style="font-size:9px;color:var(--color-text-soft);font-weight:600;letter-spacing:0.05em;">HOME</div>
-            <div class="phone-greeting">Hey, Alex!</div>
-          </div>
-          <div class="phone-avatar">🔥</div>
-        </div>
-        <div class="phone-card">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
-            <div style="font-size:9px;font-weight:700;color:var(--color-text-light);letter-spacing:0.08em;">THIS WEEK</div>
-            <div class="phone-pill pill-coral">3d 4h left</div>
-          </div>
-          <div style="font-family:var(--font-display);font-weight:700;font-size:13px;margin-bottom:6px;">May 5 – 11</div>
-          <div class="shield-row ${hl === 'shields' ? 'highlight' : ''}" style="padding:4px;">
-            <div class="shield done">✓</div>
-            <div class="shield done">✓</div>
-            <div class="shield done">✓</div>
-            <div class="shield live">•</div>
-          </div>
-          <div style="font-size:10px;color:var(--color-text-soft);margin-top:6px;">3 of 4 days complete</div>
-        </div>
-        <div class="phone-card" style="background:rgba(217,83,79,0.08);">
-          <div style="display:flex;justify-content:space-between;align-items:center;font-size:10px;">
-            <span style="color:var(--color-red);font-weight:700;">AT RISK</span>
-            <span style="color:var(--color-red);font-weight:800;">$5</span>
-          </div>
-        </div>`;
-
-      const watch = `
-        <div style="text-align:center;font-family:var(--font-display);font-weight:700;font-size:14px;margin-bottom:6px;">How Workouts Get Logged</div>
-        <div class="watch">
-          <div class="watch-screen">
-            <div class="watch-label">WORKOUT</div>
-            <div style="font-size:18px;">🏃</div>
-            <div class="watch-activity">Outdoor Run</div>
-            <div class="watch-start ${hl === 'watchStart' ? 'highlight-pill' : ''}">Start</div>
-          </div>
-        </div>
-        <div style="text-align:center;font-size:10px;color:var(--color-text-soft);margin-top:14px;line-height:1.5;">
-          Logged on watch → Apple Health → Workout Pledge
-        </div>`;
-
-      const flow = `
-        <div class="flow">
-          <div class="flow-step">⌚ Apple Watch</div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-step">❤️ Apple Health</div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-step accent">🛡 Workout Pledge</div>
-        </div>
-        <div style="text-align:center;font-size:10px;color:var(--color-text-soft);margin-top:12px;line-height:1.5;">
-          30 min/day &nbsp;·&nbsp; auto-synced
-        </div>`;
-
-      const friends = `
-        <div class="phone-h" style="margin-bottom:8px;">
-          <div class="phone-greeting" style="font-size:16px;">Friends</div>
-          <div style="font-size:11px;color:var(--color-text-soft);">2</div>
-        </div>
-        <div class="phone-card" style="background:rgba(224,122,95,0.08);padding:7px 10px;display:flex;justify-content:space-between;align-items:center;font-size:10px;font-weight:600;color:var(--color-accent);">
-          <span>👋 1 unseen poke</span>
-          <span>›</span>
-        </div>
-        <div style="display:flex;gap:6px;margin-bottom:8px;">
-          <div class="phone-btn-fill ${hl === 'addFriend' ? 'highlight-pill' : ''}" style="flex:1;text-align:center;">+ Add Friend</div>
-          <div class="phone-btn-outline" style="flex:1;text-align:center;">Pending</div>
-        </div>
-        <div class="phone-card ${hl === 'friendProgress' ? 'highlight' : ''}" style="padding:10px;">
-          <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
-            <div class="phone-avatar" style="width:24px;height:24px;font-size:9px;">JM</div>
-            <div style="flex:1;">
-              <div style="font-weight:700;font-size:11px;">Jordan M.</div>
-              <div style="font-size:9px;color:var(--color-text-soft);">3 / 4 this week</div>
-            </div>
-            <span style="color:var(--color-accent);font-size:11px;">🔔</span>
-          </div>
-          <div class="shield-row" style="margin-top:3px;">
-            <div class="shield done">✓</div>
-            <div class="shield done">✓</div>
-            <div class="shield done">✓</div>
-            <div class="shield"></div>
-          </div>
-        </div>
-        <div class="phone-card" style="padding:10px;">
-          <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
-            <div class="phone-avatar" style="width:24px;height:24px;font-size:9px;background:var(--color-plum);">SR</div>
-            <div style="flex:1;">
-              <div style="font-weight:700;font-size:11px;">Sam R.</div>
-              <div style="font-size:9px;color:var(--color-text-soft);">1 / 4 this week</div>
-            </div>
-            <div class="phone-btn-outline ${hl === 'poke' ? 'highlight-pill' : ''}" style="padding:2px 8px;font-size:9px;">👉 Poke</div>
-          </div>
-        </div>`;
-
-      const history = `
-        <div class="phone-h" style="margin-bottom:8px;">
-          <div class="phone-greeting" style="font-size:16px;">History</div>
-          <div class="phone-pill pill-green">6 / 6 won</div>
-        </div>
-        <div class="phone-card" style="display:flex;gap:8px;text-align:center;padding:10px;">
-          <div style="flex:1;">
-            <div style="font-size:9px;color:var(--color-text-light);font-weight:700;letter-spacing:0.06em;">STREAK</div>
-            <div style="font-family:var(--font-display);font-weight:800;font-size:13px;">6 wks</div>
-          </div>
-          <div style="flex:1;border-left:1px solid var(--color-border);border-right:1px solid var(--color-border);">
-            <div style="font-size:9px;color:var(--color-text-light);font-weight:700;letter-spacing:0.06em;">EARNED</div>
-            <div style="font-family:var(--font-display);font-weight:800;font-size:13px;color:var(--color-accent);">2,125</div>
-          </div>
-          <div style="flex:1;">
-            <div style="font-size:9px;color:var(--color-text-light);font-weight:700;letter-spacing:0.06em;">CHARGES</div>
-            <div style="font-family:var(--font-display);font-weight:800;font-size:13px;">$0</div>
-          </div>
-        </div>
-        <div style="font-size:9px;color:var(--color-text-light);font-weight:700;letter-spacing:0.08em;margin:8px 0 4px;">ALL WEEKS</div>
-        <div class="phone-card ${hl === 'historyRow' ? 'highlight' : ''}" style="display:flex;justify-content:space-between;align-items:center;padding:9px 11px;">
-          <div>
-            <div style="font-weight:700;font-size:11px;">Week of May 4</div>
-            <div style="font-size:9px;color:var(--color-accent);">⏱ Awaiting payout</div>
-          </div>
-          <div class="phone-pill pill-sage">Passed</div>
-        </div>
-        <div class="phone-card" style="display:flex;justify-content:space-between;align-items:center;padding:9px 11px;">
-          <div>
-            <div style="font-weight:700;font-size:11px;">Week of Apr 27</div>
-            <div style="font-size:9px;color:var(--color-green);font-weight:600;">+ 375 pts</div>
-          </div>
-          <div class="phone-pill pill-green">Passed</div>
-        </div>`;
-
-      const wallet = `
-        <div class="phone-h" style="margin-bottom:10px;">
-          <div class="phone-greeting" style="font-size:16px;">Wallet</div>
-        </div>
-        <div class="wallet-hero ${hl === 'points' ? 'highlight' : ''}">
-          <div style="font-size:9px;color:rgba(255,255,255,0.6);font-weight:700;letter-spacing:0.1em;">POINTS</div>
-          <div style="font-family:var(--font-display);font-weight:800;font-size:26px;line-height:1.1;margin:2px 0;">1,625</div>
-          <div style="font-size:10px;color:rgba(255,255,255,0.7);margin-bottom:10px;">Available to redeem</div>
-          <div style="display:flex;gap:6px;">
-            <div class="${hl === 'redeem' ? 'highlight-pill' : ''}" style="background:var(--color-accent);color:#fff;padding:6px 14px;border-radius:100px;font-weight:700;font-size:10px;">Redeem</div>
-            <div class="phone-pill pill-dark">Disputes</div>
-          </div>
-        </div>
-        <div style="display:flex;gap:8px;margin-top:8px;text-align:center;font-size:9px;">
-          <div style="flex:1;"><div style="color:var(--color-text-light);font-weight:700;">ALL-TIME</div><div style="font-weight:800;font-size:11px;">2,125</div></div>
-          <div style="flex:1;"><div style="color:var(--color-text-light);font-weight:700;">REDEEMED</div><div style="font-weight:800;font-size:11px;">500</div></div>
-          <div style="flex:1;"><div style="color:var(--color-text-light);font-weight:700;">DONATED</div><div style="font-weight:800;font-size:11px;">$0</div></div>
-        </div>`;
-
-      const dispute = `
-        <div class="phone-h" style="margin-bottom:8px;">
-          <div class="phone-greeting" style="font-size:14px;">Week of Apr 20</div>
-        </div>
-        <div class="phone-card" style="background:rgba(217,83,79,0.08);padding:12px;">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-            <span style="color:var(--color-red);font-weight:800;font-size:18px;">✕</span>
-            <span class="phone-pill pill-red">Goal Missed</span>
-          </div>
-          <div style="font-weight:700;font-size:11px;margin-bottom:2px;">3 of 4 days · −$10</div>
-          <div style="font-size:9px;color:var(--color-text-soft);">Charged Monday at 11:59 PM</div>
-        </div>
-        <div class="phone-card" style="padding:10px;display:flex;align-items:center;gap:8px;">
-          <span style="color:var(--color-accent);font-size:14px;">⏱</span>
-          <div style="font-size:10px;line-height:1.4;">
-            <div style="font-weight:700;">Dispute window open</div>
-            <div style="color:var(--color-text-soft);">Closes Wed 11:59 PM</div>
-          </div>
-        </div>
-        <div class="phone-btn-outline ${hl === 'fileDispute' ? 'highlight-pill' : ''}" style="text-align:center;padding:9px;font-size:11px;margin-top:8px;">💬 File Dispute</div>`;
-
-      const redeem = `
-        <div class="phone-h" style="margin-bottom:8px;">
-          <div class="phone-greeting" style="font-size:14px;">Redeem Points</div>
-          <div class="phone-pill" style="background:#f0e8dc;color:var(--color-text-soft);">Cancel</div>
-        </div>
-        <div style="font-size:10px;color:var(--color-text-soft);margin-bottom:8px;">Available: <strong>1,625 pts</strong> ($16.25)</div>
-        <div class="redeem-tab">
-          <div class="${hl === 'giftTab' ? 'active highlight' : (hl === 'donateTab' ? '' : 'active')}">🎁 Gift Cards</div>
-          <div class="${hl === 'donateTab' ? 'active highlight' : ''}">💛 Donate</div>
-        </div>
-        <div class="gift-tier"><div class="gift-icon">🎁</div><div style="flex:1;"><div style="font-weight:700;">$5 Amazon</div><div style="color:var(--color-text-soft);font-size:9px;">500 pts</div></div><div class="phone-pill pill-sage">Ready</div></div>
-        <div class="gift-tier"><div class="gift-icon">🎁</div><div style="flex:1;"><div style="font-weight:700;">$10 Amazon</div><div style="color:var(--color-text-soft);font-size:9px;">1,000 pts</div></div><div class="phone-pill pill-sage">Ready</div></div>
-        <div class="gift-tier" style="opacity:0.5;"><div class="gift-icon">🔒</div><div style="flex:1;"><div style="font-weight:700;">$25 Amazon</div><div style="color:var(--color-text-soft);font-size:9px;">2,500 pts</div></div></div>`;
-
-      const splash = `
-        <div class="splash">
-          <img src="workout-pledge-logo-2.svg" alt="Workout Pledge logo" />
-          <h2>Workout<span>Pledge</span></h2>
-          <p>Put money on the line.<br>Keep your word.</p>
-        </div>`;
-
-      const finish = `
-        <div class="splash">
-          <div class="check-circle">✓</div>
-          <h2 style="font-size:18px;">You're all set</h2>
-          <p style="margin-bottom:14px;">Time to make your first pledge.</p>
-          <div class="phone-btn-primary" style="padding:9px 22px;">Get Started</div>
-        </div>`;
-
-      switch (kind) {
-        case 'splash': return splash;
-        case 'homeInactive': return homeInactive;
-        case 'homeActive': return homeActive;
-        case 'watch': return watch;
-        case 'flow': return flow;
-        case 'friends': return friends;
-        case 'history': return history;
-        case 'wallet': return wallet;
-        case 'dispute': return dispute;
-        case 'redeem': return redeem;
-        case 'finish': return finish;
-        default: return splash;
+    // SVG shield as an inline string so we can swap the inner fill/stroke
+    function shield(size, state) {
+      // state: 'done', 'live', 'empty'
+      const w = size;
+      const h = size * 1.15;
+      let fill = 'none', stroke = 'rgba(0,0,0,0.18)', strokeW = 2, inner = '';
+      if (state === 'done') {
+        fill = '#E07850'; stroke = '#E07850';
+        inner = `<path d="M${w*0.30} ${h*0.55} L${w*0.46} ${h*0.70} L${w*0.74} ${h*0.40}" stroke="#48BB78" stroke-width="${w*0.13}" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`;
+      } else if (state === 'live') {
+        fill = 'none'; stroke = '#E07850'; strokeW = 2.5;
+        inner = `<circle cx="${w*0.50}" cy="${h*0.54}" r="${w*0.10}" fill="#E07850"/>`;
       }
+      return `<svg class="shield-svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" aria-hidden="true">
+        <path d="M${w*0.50} ${h*0.05}
+                 C${w*0.78} ${h*0.05} ${w*0.95} ${h*0.10} ${w*0.95} ${h*0.25}
+                 L${w*0.95} ${h*0.50}
+                 C${w*0.95} ${h*0.78} ${w*0.75} ${h*0.94} ${w*0.50} ${h*0.97}
+                 C${w*0.25} ${h*0.94} ${w*0.05} ${h*0.78} ${w*0.05} ${h*0.50}
+                 L${w*0.05} ${h*0.25}
+                 C${w*0.05} ${h*0.10} ${w*0.22} ${h*0.05} ${w*0.50} ${h*0.05} Z"
+              fill="${fill}" stroke="${stroke}" stroke-width="${strokeW}" stroke-linejoin="round"/>
+        ${inner}
+      </svg>`;
     }
 
-    // ===== Tour data — 20 steps =====
+    function tabbar(activeIdx) {
+      const tabs = [
+        { i: '🏠', label: 'Home' },
+        { i: '🛡', label: 'Pledge' },
+        { i: '💼', label: 'Wallet' },
+        { i: '👥', label: 'Friends' },
+        { i: '👤', label: 'Profile' },
+      ];
+      return `<div class="ps-tabbar">${tabs.map((t, idx) => `
+        <div class="ps-tab${idx === activeIdx ? ' active' : ''}">
+          <div class="ps-tab-icon">${t.i}</div>
+          <div>${t.label}</div>
+        </div>`).join('')}</div>`;
+    }
+
+    function buildScreen(kind, hl) {
+      // -------- Splash --------
+      if (kind === 'splash') {
+        return `<div class="ps-statusbar"></div>
+        <div class="ps-content">
+          <div class="splash">
+            <img src="workout-pledge-logo-2.svg" alt="Workout Pledge" />
+            <h2>Workout<span class="accent">Pledge</span></h2>
+            <p>Put money on the line.<br>Keep your word.</p>
+          </div>
+        </div>`;
+      }
+
+      // -------- Home (inactive) --------
+      if (kind === 'homeInactive') {
+        return `<div class="ps-statusbar"></div>
+        <div class="ps-content" style="padding: 8px 14px 4px;">
+          <div class="ps-h-row">
+            <div class="ps-avatar">A</div>
+            <div class="ps-greeting">Hey, Alex!</div>
+          </div>
+          <div class="home-hero">
+            <div class="home-hero-circle">🔥</div>
+            <h3>Ready to Commit?</h3>
+            <p>Set your weekly goal and lock in a pledge.</p>
+          </div>
+          <div class="feature-row"><div class="fr-icon">📅</div>Pick days · 1–7 per week</div>
+          <div class="feature-row"><div class="fr-icon">💵</div>Set your stake · $1–$100/day</div>
+          <div class="feature-row"><div class="fr-icon">🔄</div>Renews automatically</div>
+          <div class="feature-row"><div class="fr-icon">⭐</div>Earn points on wins</div>
+          <div style="margin-top: 8px;" class="${hl === 'createBtn' ? 'hl' : ''}">
+            <div class="ps-btn-primary">🛡 Create My Pledge</div>
+          </div>
+        </div>
+        ${tabbar(0)}`;
+      }
+
+      // -------- Apple Health flow (with watch) --------
+      if (kind === 'health') {
+        return `<div class="ps-statusbar"></div>
+        <div class="ps-content">
+          <div class="health-screen">
+            <h3>How Workouts Get Logged</h3>
+            <div class="watch-mock ${hl === 'watchStart' ? 'hl' : ''}">
+              <div class="watch-screen">
+                <div class="ws-label">Workout</div>
+                <div class="ws-fig">🏃</div>
+                <div class="ws-name">Outdoor Run</div>
+                <div class="ws-start">Start</div>
+              </div>
+            </div>
+            <div class="health-flow">
+              <div class="arrow">↓</div>
+              <div class="step">❤️ Saves to Apple Health</div>
+              <div class="arrow">↓</div>
+              <div class="step accent">🛡 Synced to Workout Pledge</div>
+            </div>
+            <div style="font-size: 9px; color: rgba(0,0,0,0.55); margin-top: 10px; text-align: center; line-height: 1.5;">
+              30 min/day &nbsp;·&nbsp; auto-synced
+            </div>
+          </div>
+        </div>
+        ${tabbar(0)}`;
+      }
+
+      // -------- Active pledge home (with shields + daily) --------
+      if (kind === 'homeActive') {
+        return `<div class="ps-statusbar"></div>
+        <div class="ps-content" style="padding: 8px 14px 4px;">
+          <div class="ps-h-row">
+            <div class="ps-avatar">A</div>
+            <div class="ps-greeting">Hey, Alex!</div>
+          </div>
+          <div class="ps-card-lg this-week ${hl === 'shields' ? 'hl' : ''}">
+            <div class="tw-header">
+              <div>
+                <div class="tw-label">THIS WEEK</div>
+                <div class="tw-date">May 5 – 11</div>
+              </div>
+              <div class="ps-pill pill-coral">⏱ 3d 4h left</div>
+            </div>
+            <div class="shield-row">
+              ${shield(28, 'done')}
+              ${shield(28, 'done')}
+              ${shield(28, 'done')}
+              ${shield(28, 'live')}
+            </div>
+            <div class="at-risk">
+              <div class="label">AT RISK</div>
+              <div class="amount">$5</div>
+            </div>
+          </div>
+          <div style="font-size: 8.5px; font-weight: 700; color: rgba(0,0,0,0.4); letter-spacing: 0.1em; margin: 7px 2px 4px;">DAILY</div>
+          <div class="ps-card" style="padding: 6px 8px;">
+            <div class="daily-row">
+              <div class="daily-day">MON</div>
+              <div class="daily-bar"><div class="fill" style="width: 100%; background: var(--app-goal-green);"></div></div>
+              <div class="daily-min">35/30</div>
+            </div>
+            <div class="daily-row">
+              <div class="daily-day">TUE</div>
+              <div class="daily-bar"><div class="fill" style="width: 100%; background: var(--app-goal-green);"></div></div>
+              <div class="daily-min">42/30</div>
+            </div>
+            <div class="daily-row">
+              <div class="daily-day">WED</div>
+              <div class="daily-bar"><div class="fill" style="width: 100%; background: var(--app-goal-green);"></div></div>
+              <div class="daily-min">31/30</div>
+            </div>
+            <div class="daily-row today">
+              <div class="daily-day" style="color: var(--app-coral);">THU</div>
+              <div class="daily-bar"><div class="fill" style="width: 55%; background: var(--app-coral);"></div></div>
+              <div class="daily-min" style="color: var(--app-coral);">17/30</div>
+            </div>
+          </div>
+        </div>
+        ${tabbar(0)}`;
+      }
+
+      // -------- Friends --------
+      if (kind === 'friends') {
+        return `<div class="ps-statusbar"></div>
+        <div class="ps-content" style="padding: 8px 14px 4px;">
+          <div class="ps-title">Friends</div>
+          <div class="friends-banner">
+            <span>👋 1 unseen poke</span>
+            <span style="font-size: 8px;">Mark all seen</span>
+          </div>
+          <div class="friends-actions">
+            <div class="ps-btn-fill ${hl === 'addFriend' ? 'hl-pill' : ''}" style="border-radius: 10px; padding: 6px;">
+              👤+ Add Friend
+            </div>
+            <div class="ps-btn-outline" style="padding: 6px;">Pending</div>
+          </div>
+          <div class="friend-card has-poke ${hl === 'friendProgress' ? 'hl' : ''}">
+            <div class="inline-poke">👋 Jordan M. poked you · 8:32 AM</div>
+            <div class="fr-head">
+              <div class="ps-avatar" style="width: 24px; height: 24px; font-size: 9px;">JM</div>
+              <div style="flex: 1;">
+                <div class="fr-name">Jordan M.</div>
+                <div class="fr-progress">3 / 4 this week</div>
+              </div>
+              <div class="fr-bell">🔔</div>
+              <div class="ps-btn-fill" style="padding: 3px 7px;">Poke Back</div>
+            </div>
+            <div class="fr-shields">
+              ${shield(14, 'done')}
+              ${shield(14, 'done')}
+              ${shield(14, 'done')}
+              ${shield(14, 'empty')}
+            </div>
+          </div>
+          <div class="friend-card">
+            <div class="fr-head">
+              <div class="ps-avatar plum" style="width: 24px; height: 24px; font-size: 9px;">SR</div>
+              <div style="flex: 1;">
+                <div class="fr-name">Sam R.</div>
+                <div class="fr-progress">1 / 4 this week</div>
+              </div>
+              <div class="fr-bell off">🔕</div>
+              <div class="ps-btn-outline ${hl === 'poke' ? 'hl-pill' : ''}" style="padding: 3px 7px; font-size: 8.5px;">👋 Poke</div>
+            </div>
+            <div class="fr-shields">
+              ${shield(14, 'done')}
+              ${shield(14, 'empty')}
+              ${shield(14, 'empty')}
+              ${shield(14, 'empty')}
+            </div>
+          </div>
+        </div>
+        ${tabbar(3)}`;
+      }
+
+      // -------- History --------
+      if (kind === 'history') {
+        return `<div class="ps-statusbar"></div>
+        <div class="ps-content" style="padding: 8px 14px 4px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 9px;">
+            <div class="ps-title" style="margin: 0;">History</div>
+            <div class="ps-pill pill-green">✓ 6 / 6 won</div>
+          </div>
+          <div class="hist-stats">
+            <div class="col"><div class="value">6 wks</div><div class="label">Streak</div></div>
+            <div class="col"><div class="value coral">2,125</div><div class="label">Earned</div></div>
+            <div class="col"><div class="value">$0</div><div class="label">Charges</div></div>
+          </div>
+          <div style="font-size: 8.5px; font-weight: 700; color: rgba(0,0,0,0.4); letter-spacing: 0.12em; margin: 7px 2px 4px;">ALL WEEKS</div>
+          <div class="week-row ${hl === 'historyRow' ? 'hl' : ''}">
+            <div class="week-icon">⏱</div>
+            <div class="info">
+              <div class="title">Week of May 4</div>
+              <div class="sub coral">Awaiting payout</div>
+            </div>
+            <div class="ps-pill pill-sage">Passed</div>
+          </div>
+          <div class="week-row">
+            <div class="week-icon green">✓</div>
+            <div class="info">
+              <div class="title">Week of Apr 27</div>
+              <div class="sub" style="color: var(--app-goal-green);">+ 375 pts</div>
+            </div>
+            <div class="ps-pill pill-green">Passed</div>
+          </div>
+          <div class="week-row">
+            <div class="week-icon green">✓</div>
+            <div class="info">
+              <div class="title">Week of Apr 20</div>
+              <div class="sub" style="color: var(--app-goal-green);">+ 500 pts</div>
+            </div>
+            <div class="ps-pill pill-green">Passed</div>
+          </div>
+        </div>
+        ${tabbar(1)}`;
+      }
+
+      // -------- Wallet --------
+      if (kind === 'wallet') {
+        return `<div class="ps-statusbar"></div>
+        <div class="ps-content" style="padding: 8px 14px 4px;">
+          <div class="ps-title">Wallet</div>
+          <div class="wallet-hero ${hl === 'points' ? 'hl' : ''}">
+            <div class="wh-label">POINTS</div>
+            <div class="wh-value">1,625</div>
+            <div class="wh-sub">Available to redeem</div>
+            <div class="wh-actions">
+              <div class="wh-pill-coral ${hl === 'redeem' ? 'hl-pill' : ''}">🎁 Redeem</div>
+              <div class="wh-pill-white">⚠ Disputes</div>
+            </div>
+            <div class="wh-divider"></div>
+            <div class="wh-stats">
+              <div class="col"><div class="label">ALL-TIME</div><div class="v">2,125</div></div>
+              <div class="col"><div class="label">REDEEMED</div><div class="v">500</div></div>
+              <div class="col"><div class="label">DONATED</div><div class="v">$0</div></div>
+            </div>
+          </div>
+          <div style="font-size: 8.5px; font-weight: 700; color: rgba(0,0,0,0.4); letter-spacing: 0.12em; margin: 7px 2px 4px;">LIFETIME</div>
+          <div class="lifetime-row">
+            <div class="lifetime-card">
+              <div class="lc-icon" style="color: var(--app-coral);">🛡</div>
+              <div class="lc-val">5</div>
+              <div class="lc-label">Weeks won</div>
+            </div>
+            <div class="lifetime-card">
+              <div class="lc-icon" style="color: var(--app-goal-green);">🏃</div>
+              <div class="lc-val">40</div>
+              <div class="lc-label">Workouts</div>
+            </div>
+            <div class="lifetime-card">
+              <div class="lc-icon" style="color: #E59100;">⏱</div>
+              <div class="lc-val">16.4</div>
+              <div class="lc-label">Hours</div>
+            </div>
+          </div>
+        </div>
+        ${tabbar(2)}`;
+      }
+
+      // -------- Dispute --------
+      if (kind === 'dispute') {
+        return `<div class="ps-statusbar"></div>
+        <div class="ps-content" style="padding: 8px 14px 4px;">
+          <div class="dispute-hdr">Week of Apr 14</div>
+          <div class="dispute-result">
+            <div class="x-circle">✕</div>
+            <div class="gm">Goal Missed</div>
+            <div class="sub">3 of 4 days · −$10</div>
+          </div>
+          <div class="dispute-window">
+            <div class="dw-head">
+              <span class="clock">⏱</span>
+              <div>
+                <div><strong>Dispute window open</strong></div>
+                <div style="font-size: 8.5px; color: rgba(0,0,0,0.5);">Closes Wed at 11:59 PM</div>
+              </div>
+            </div>
+            <div class="dw-help">If a workout wasn't tracked correctly, file a dispute before the window closes.</div>
+            <div class="dispute-btn ${hl === 'fileDispute' ? 'hl-pill' : ''}">💬 File Dispute</div>
+          </div>
+        </div>
+        ${tabbar(1)}`;
+      }
+
+      // -------- Redemption --------
+      if (kind === 'redeem') {
+        return `<div class="ps-statusbar"></div>
+        <div class="ps-content" style="padding: 8px 14px 4px;">
+          <div class="redeem-hdr">
+            <div class="title">Redeem Points</div>
+            <div class="redeem-cancel">Cancel</div>
+          </div>
+          <div class="redeem-balance">Available: 1,625 pts <span class="sage">($16.25)</span></div>
+          <div class="seg-control">
+            <div class="seg ${hl === 'giftTab' ? 'active hl-pill' : (hl === 'donateTab' ? '' : 'active')}">🎁 Gift Cards</div>
+            <div class="seg ${hl === 'donateTab' ? 'active hl-pill' : ''}">💛 Donate</div>
+          </div>
+          <div class="gift-tier">
+            <div class="gt-icon">🎁</div>
+            <div><div class="gt-name">$5 Amazon</div><div class="gt-cost">500 pts</div></div>
+            <div class="gt-action">›</div>
+          </div>
+          <div class="gift-tier">
+            <div class="gt-icon">🎁</div>
+            <div><div class="gt-name">$10 Amazon</div><div class="gt-cost">1,000 pts</div></div>
+            <div class="gt-action">›</div>
+          </div>
+          <div class="gift-tier locked">
+            <div class="gt-icon">🔒</div>
+            <div><div class="gt-name">$25 Amazon</div><div class="gt-cost">2,500 pts</div></div>
+            <div class="gt-action">Need 875</div>
+          </div>
+          <div class="gift-tier locked">
+            <div class="gt-icon">🔒</div>
+            <div><div class="gt-name">$50 Amazon</div><div class="gt-cost">5,000 pts</div></div>
+            <div class="gt-action">Need 3,375</div>
+          </div>
+        </div>
+        ${tabbar(2)}`;
+      }
+
+      // -------- Finish --------
+      if (kind === 'finish') {
+        return `<div class="ps-statusbar"></div>
+        <div class="ps-content">
+          <div class="finish">
+            <div class="check-circle">✓</div>
+            <h3>You're all set</h3>
+            <p>Time to make your first pledge.</p>
+            <div class="ps-btn-primary" style="padding: 9px 22px;">Get Started</div>
+          </div>
+        </div>`;
+      }
+
+      return '';
+    }
+
+    // ===== 11 reduced steps =====
     const STEPS = [
-      { kind: 'splash',       hl: null,            title: "Welcome to Workout Pledge!", body: "Let's take a quick tour so you know how the app works before you start your first pledge. It only takes a minute." },
-      { kind: 'homeInactive', hl: null,            title: "This is your Home screen", body: "Every week starts here. When you don't have an active pledge, you'll see a card inviting you to commit to next week." },
-      { kind: 'homeInactive', hl: 'createBtn',     title: "Tap 'Create Pledge' to start", body: "You'll pick how many days you want to work out next week and how much money is on the line if you don't hit it. <strong>The harder the goal, the more points you earn.</strong>" },
-      { kind: 'watch',        hl: null,            title: "Workouts log automatically", body: "You don't need to tell the app you worked out. As long as Apple Health gets the workout, we'll see it — provided you granted Apple Health access during setup." },
-      { kind: 'watch',        hl: 'watchStart',    title: "Easiest way: start on your Apple Watch", body: "Open the Workout app on your watch, pick an activity, and tap Start. When you finish, the workout is saved to Apple Health and we pick it up automatically." },
-      { kind: 'flow',         hl: null,            title: "30 minutes a day counts as a workout", body: "Each day you log at least <strong>30 minutes of activity</strong> counts toward your pledge. Multiple shorter workouts add up — a 15-min walk plus a 20-min lift counts as one full day." },
-      { kind: 'homeActive',   hl: 'shields',       title: "Track your week at a glance", body: "Once your pledge is active, Home shows your week so far. Each filled shield is a day you hit your 30 minutes — gray outlines are days still ahead." },
-      { kind: 'friends',      hl: null,            title: "Bring your friends", body: "The Friends tab is where the accountability lives. You can see who's keeping up with their week and who needs a nudge." },
-      { kind: 'friends',      hl: 'addFriend',     title: "Add a friend with a link", body: "Tap <strong>Add Friend</strong> to copy a personal invite link. Send it however you want — when they tap it and sign up, you're connected." },
-      { kind: 'friends',      hl: 'friendProgress',title: "See how each friend is doing", body: "Every friend shows their current week progress right in the list — workouts logged, days remaining, and whether they're on track." },
-      { kind: 'friends',      hl: 'poke',          title: "Poke a friend who's behind", body: "If a friend hasn't logged anything in a few days, tap the poke button. They'll get a notification — friendly pressure goes a long way." },
-      { kind: 'history',      hl: null,            title: "Pledge History remembers every week", body: "Each card is a week you've pledged on. <strong>Green check</strong> means you hit your goal and earned points; <strong>red X</strong> means you fell short and the penalty was charged." },
-      { kind: 'history',      hl: 'historyRow',    title: "Tap any week for details", body: "Open a week to see exactly which days you logged, the points awarded, and the option to dispute the result if something looks off." },
-      { kind: 'wallet',       hl: 'points',        title: "Your points live in the Wallet", body: "Every successful week earns you points. The more days you pledge to work out on, the more points you could earn from the pot." },
-      { kind: 'wallet',       hl: null,            title: "When points are awarded", body: "When your pledge week ends Sunday at 11:59 PM, a <strong>3-day dispute window</strong> opens. The window closes Wednesday at 11:59 PM, and points are credited the following Monday — one week after the pledge week ends." },
-      { kind: 'dispute',      hl: 'fileDispute',   title: "Disputes are for emergencies only", body: "If your phone or Apple Watch died, or you had a medical emergency, tap a failed week and hit <strong>File Dispute</strong>. We'll re-review your data and waive the penalty if approved. Please don't dispute for weather or a busy schedule — you can do any workout, anywhere." },
-      { kind: 'wallet',       hl: 'redeem',        title: "Tap Redeem when you're ready", body: "Spend your points whenever you want — they don't expire." },
-      { kind: 'redeem',       hl: 'giftTab',       title: "Cash out for an Amazon gift card", body: "Pick a gift card amount and we'll email you the code. The conversion rate is shown next to each tier." },
-      { kind: 'redeem',       hl: 'donateTab',     title: "…or donate them to a cause", body: "Switch to the <strong>Donate</strong> tab to give your points to a vetted nonprofit. We convert points to dollars and send the donation on your behalf." },
-      { kind: 'finish',       hl: null,            title: "You're ready!", body: "That's the whole app. Join the waitlist and we'll let you know the moment you can set up your first pledge — your future self will thank you." }
+      { kind: 'splash',       hl: null,           title: 'Welcome to Workout Pledge',
+        body: 'A quick tour so you know how the app works before your first pledge — about a minute.' },
+
+      { kind: 'homeInactive', hl: 'createBtn',    title: 'Start with a pledge',
+        body: 'On the Home screen, tap <strong>Create My Pledge</strong> to pick how many days you want to work out next week and how much you’ll forfeit if you miss.' },
+
+      { kind: 'health',       hl: 'watchStart',   title: 'Workouts log automatically',
+        body: 'Start a workout on your Apple Watch (or any source that writes to Apple Health). It syncs to us automatically — <strong>30 min/day</strong> per committed day, and multiple sessions stack.' },
+
+      { kind: 'homeActive',   hl: 'shields',      title: 'Track your week at a glance',
+        body: 'Filled shields are days you hit your goal. The daily list shows exactly where you stand and what’s <strong>at risk</strong> if you don’t finish.' },
+
+      { kind: 'friends',      hl: 'addFriend',    title: 'Bring your friends',
+        body: 'Tap <strong>Add Friend</strong> to share an invite link. Once they sign up, you’ll see each other’s weekly progress.' },
+
+      { kind: 'friends',      hl: 'poke',         title: 'Poke a friend who’s behind',
+        body: 'If someone’s gone quiet, tap <strong>Poke</strong> and they’ll get a friendly nudge. Bell icon controls notifications for each friend.' },
+
+      { kind: 'history',      hl: 'historyRow',   title: 'Every week, remembered',
+        body: 'Pledge History shows your streak, points earned, and every settled week. Tap any week for the daily breakdown.' },
+
+      { kind: 'wallet',       hl: 'points',       title: 'Your points live in the Wallet',
+        body: 'Earned the Monday after each successful week ends — that’s one week after the pledge week closes, giving the 3-day dispute window time to settle.' },
+
+      { kind: 'dispute',      hl: 'fileDispute',  title: 'Disputes — for emergencies only',
+        body: 'Dead phone, broken watch, medical issue? <strong>File a dispute</strong> within 3 days of week-end and we’ll review. Not for "I was busy" — you can do any workout, anywhere.' },
+
+      { kind: 'redeem',       hl: 'giftTab',      title: 'Cash out or give back',
+        body: 'Tap <strong>Redeem</strong> in your Wallet. Pick an Amazon gift card in your local currency, or switch to the <strong>Donate</strong> tab to give to a vetted nonprofit.' },
+
+      { kind: 'finish',       hl: null,           title: 'You’re ready',
+        body: 'That’s the whole app. Join the waitlist and we’ll let you know the moment you can set up your first pledge.' },
     ];
 
-    // ===== State + render =====
     const total = STEPS.length;
     let idx = 0;
 
@@ -1077,7 +1203,6 @@
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
 
-    // build dots
     for (let i = 0; i < total; i++) {
       const d = document.createElement('button');
       d.className = 'dot';
@@ -1089,7 +1214,6 @@
 
     function render() {
       const s = STEPS[idx];
-      // phone screen
       const screenEl = document.createElement('div');
       screenEl.className = 'phone-frame';
       const inner = document.createElement('div');
@@ -1099,55 +1223,42 @@
       phoneSlot.innerHTML = '';
       phoneSlot.appendChild(screenEl);
 
-      // copy
       stepCounter.textContent = `Step ${idx + 1} of ${total}`;
       stepTitle.textContent = s.title;
       stepBody.innerHTML = s.body;
 
-      // progress
       const pct = ((idx + 1) / total) * 100;
       progressFill.style.width = pct + '%';
 
-      // dots
       [...dotsWrap.children].forEach((d, i) => {
         d.classList.toggle('active', i === idx);
         d.classList.toggle('visited', i < idx);
       });
 
-      // arrows
       prevBtn.disabled = idx === 0;
       nextBtn.disabled = idx === total - 1;
       nextBtn.setAttribute('aria-label', idx === total - 1 ? 'End of tour' : 'Next step');
 
-      // restart key-frame animation
-      const card = document.querySelector('.step-content, .tour-card > div:last-child');
-
-      // analytics
       if (typeof gtag === 'function') {
         gtag('event', 'tour_step_view', { step_index: idx + 1, step_title: s.title });
       }
     }
 
-    function goTo(n) {
-      idx = Math.max(0, Math.min(total - 1, n));
-      render();
-    }
+    function goTo(n) { idx = Math.max(0, Math.min(total - 1, n)); render(); }
     function next() { if (idx < total - 1) goTo(idx + 1); }
     function prev() { if (idx > 0) goTo(idx - 1); }
 
     prevBtn.addEventListener('click', prev);
     nextBtn.addEventListener('click', next);
 
-    // keyboard
     document.addEventListener('keydown', (e) => {
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-      if (e.key === 'ArrowRight') { next(); }
-      else if (e.key === 'ArrowLeft') { prev(); }
-      else if (e.key === 'Home') { goTo(0); }
-      else if (e.key === 'End') { goTo(total - 1); }
+      if (e.key === 'ArrowRight') next();
+      else if (e.key === 'ArrowLeft') prev();
+      else if (e.key === 'Home') goTo(0);
+      else if (e.key === 'End') goTo(total - 1);
     });
 
-    // touch swipe
     let startX = null;
     const card = document.getElementById('tourCard');
     card.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
@@ -1158,7 +1269,6 @@
       startX = null;
     });
 
-    // initial render
     render();
   </script>
 
