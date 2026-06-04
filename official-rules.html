@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-X3DXMLCFG5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-X3DXMLCFG5');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Official Rules — Workout Pledge</title>
+  <meta name="description" content="The Workout Pledge Official Rules — sponsor, eligibility, how rewards are determined, the reward pool, redemption, and more. Apple is not a sponsor." />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" href="/favicon.ico" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --color-bg: #FDFAF6;
+      --color-surface: #FFFFFF;
+      --color-surface-warm: #F6F0E8;
+      --color-accent: #E07A5F;
+      --color-accent-soft: rgba(224, 122, 95, 0.1);
+      --color-accent-hover: #c9694f;
+      --color-sage: #7BA08A;
+      --color-sage-soft: rgba(123, 160, 138, 0.1);
+      --color-plum: #8B6F8E;
+      --color-text: #2C2825;
+      --color-text-soft: #6B6560;
+      --color-text-light: #9B9590;
+      --color-border: rgba(44, 40, 37, 0.08);
+      --font-display: 'Fraunces', serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --radius: 20px;
+      --radius-sm: 12px;
+      --shadow-soft: 0 2px 20px rgba(44, 40, 37, 0.06);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav.site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0.9rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(253, 250, 246, 0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    /* Page selector pill bar */
+    .page-selector {
+      position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
+      background: rgba(253, 250, 246, 0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--color-border);
+      padding: 0.55rem 2rem;
+      display: flex; justify-content: center; align-items: center; gap: 0.4rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .page-selector::-webkit-scrollbar { display: none; }
+    .page-pill {
+      flex-shrink: 0;
+      padding: 0.45rem 1rem;
+      border-radius: 100px;
+      font-size: 0.85rem; font-weight: 600;
+      color: var(--color-text-soft);
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      white-space: nowrap;
+    }
+    .page-pill:hover {
+      background: var(--color-surface);
+      color: var(--color-text);
+      border-color: var(--color-border);
+    }
+    .page-pill.active {
+      background: var(--color-accent);
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(224, 122, 95, 0.25);
+    }
+    .page-pill .pill-icon { font-size: 0.95em; }
+    .page-pill.cta {
+      background: var(--color-text);
+      color: #fff;
+      margin-left: 0.5rem;
+    }
+    .page-pill.cta:hover { background: var(--color-text); color: #fff; transform: translateY(-1px); }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--color-text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+    .nav-logo span { color: var(--color-accent); }
+    .nav-logo img { height: 34px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      color: var(--color-text-soft);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--color-text); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 100px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      border: none;
+      white-space: nowrap;
+    }
+    .btn-primary { background: var(--color-accent); color: #fff; }
+    .btn-primary:hover {
+      background: var(--color-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(224, 122, 95, 0.3);
+    }
+
+    .doc-hero {
+      padding: 10rem 2rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .doc-hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -180px;
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, rgba(224, 122, 95, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .doc-hero .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.1rem;
+      background: var(--color-sage-soft);
+      border: 1px solid rgba(123, 160, 138, 0.2);
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-sage);
+      margin-bottom: 1.25rem;
+    }
+    .doc-hero h1 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .effective-date {
+      margin-top: 1.25rem;
+      font-size: 0.95rem;
+      color: var(--color-text-soft);
+    }
+    .effective-date strong { color: var(--color-text); font-weight: 600; }
+
+    .doc-layout {
+      max-width: 1100px;
+      margin: 2rem auto 0;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+    .toc {
+      position: sticky;
+      top: 100px;
+      align-self: start;
+      max-height: calc(100vh - 130px);
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
+    .toc h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-text-light);
+      margin-bottom: 0.85rem;
+    }
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+    }
+    .toc li {
+      counter-increment: toc;
+      margin-bottom: 0.35rem;
+    }
+    .toc a {
+      display: block;
+      padding: 0.35rem 0.65rem 0.35rem 1.85rem;
+      color: var(--color-text-soft);
+      text-decoration: none;
+      font-size: 0.88rem;
+      line-height: 1.4;
+      border-radius: var(--radius-sm);
+      transition: background 0.2s, color 0.2s;
+      position: relative;
+    }
+    .toc a::before {
+      content: counter(toc);
+      position: absolute;
+      left: 0.45rem;
+      color: var(--color-text-light);
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+    .toc a:hover { background: var(--color-surface-warm); color: var(--color-text); }
+    .toc a.active { background: var(--color-accent-soft); color: var(--color-accent); }
+    .toc a.active::before { color: var(--color-accent); }
+
+    .doc-content {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 3rem 3.25rem;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+    .doc-content::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-sage), var(--color-plum));
+    }
+
+    .doc-content .intro {
+      color: var(--color-text-soft);
+      font-size: 1.02rem;
+      margin-bottom: 2rem;
+    }
+    .doc-content .intro p + p { margin-top: 0.85rem; }
+
+    .doc-content section {
+      padding-top: 2.25rem;
+      scroll-margin-top: 90px;
+    }
+    .doc-content section + section { border-top: 1px solid var(--color-border); }
+
+    .doc-content h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+      letter-spacing: -0.015em;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+    .doc-content h2 .section-num {
+      color: var(--color-accent);
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0;
+      flex-shrink: 0;
+      width: 1.65rem;
+    }
+    .doc-content h3 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.08rem;
+      margin: 1.25rem 0 0.5rem;
+      color: var(--color-text);
+    }
+    .doc-content p {
+      color: var(--color-text-soft);
+      font-size: 0.97rem;
+      margin-bottom: 0.85rem;
+    }
+    .doc-content p:last-child { margin-bottom: 0; }
+    .doc-content p strong { color: var(--color-text); font-weight: 600; }
+    .doc-content ul, .doc-content ol {
+      margin: 0.5rem 0 1rem 1.5rem;
+      color: var(--color-text-soft);
+    }
+    .doc-content li { margin-bottom: 0.4rem; font-size: 0.97rem; }
+    .doc-content li strong { color: var(--color-text); font-weight: 600; }
+    .doc-content a { color: var(--color-accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    .doc-content a:hover { color: var(--color-accent-hover); }
+
+    .callout {
+      background: var(--color-surface-warm);
+      border-left: 3px solid var(--color-accent);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      font-size: 0.93rem;
+      color: var(--color-text-soft);
+    }
+    .callout strong { color: var(--color-text); font-weight: 600; }
+
+    footer {
+      border-top: 1px solid var(--color-border);
+      padding: 2.5rem 2rem;
+      margin-top: 4rem;
+    }
+    .footer-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy { color: var(--color-text-light); font-size: 0.85rem; }
+    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-links a {
+      color: var(--color-text-light);
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--color-text); }
+
+    @media (max-width: 960px) {
+      .doc-layout {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .toc {
+        position: static;
+        max-height: none;
+        order: 2;
+        margin-top: 2rem;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        box-shadow: var(--shadow-soft);
+      }
+      .doc-content { padding: 2rem 1.75rem; }
+    }
+    @media (max-width: 768px) {
+      nav.site-nav { padding: 0.7rem 1rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a:not(.btn) { display: none; }
+      .nav-logo { font-size: 1.05rem; gap: 0.4rem; }
+      .nav-logo img { height: 28px; }
+      .nav-links .btn { padding: 0.55rem 1rem; font-size: 0.82rem; }
+      .page-selector { top: 56px; padding: 0.45rem 0.75rem; gap: 0.3rem; justify-content: flex-start; }
+      .page-pill { padding: 0.4rem 0.85rem; font-size: 0.8rem; }
+      .doc-hero { padding: 8.5rem 1.25rem 1rem; }
+      .doc-layout { padding: 0 1rem; }
+      .doc-content { padding: 1.75rem 1.25rem; }
+      .doc-content h2 { font-size: 1.2rem; }
+      .footer-inner { justify-content: center; text-align: center; }
+    }
+    @media print {
+      nav.site-nav, .toc, footer, .doc-hero .eyebrow { display: none; }
+      .doc-hero { padding: 1rem 0; }
+      .doc-layout { grid-template-columns: 1fr; padding: 0; }
+      .doc-content { box-shadow: none; border: none; padding: 0; }
+      .doc-content section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo" aria-label="Workout Pledge home">
+      <img src="workout-pledge-logo-2.svg" alt="Workout Pledge shield logo" />
+      Workout<span>Pledge</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#how-it-works">How It Works</a>
+      <a href="index.html#cta" class="btn btn-primary">Join Waitlist</a>
+    </div>
+  </nav>
+
+  <div class="page-selector" role="tablist" aria-label="Page navigation">
+    <a href="index.html" class="page-pill"><span class="pill-icon">🏠</span> Home</a>
+    <a href="why-it-works.html" class="page-pill"><span class="pill-icon">🧠</span> Why It Works</a>
+    <a href="tour.html" class="page-pill"><span class="pill-icon">🎬</span> Tour</a>
+    <a href="faq.html" class="page-pill"><span class="pill-icon">💬</span> FAQ</a>
+    <a href="privacy-policy.html" class="page-pill"><span class="pill-icon">🔒</span> Privacy</a>
+    <a href="terms-of-service.html" class="page-pill"><span class="pill-icon">📜</span> Terms</a>
+    <a href="official-rules.html" class="page-pill active" aria-current="page"><span class="pill-icon">🏆</span> Official Rules</a>
+    <a href="index.html#cta" class="page-pill cta">Join Waitlist</a>
+  </div>
+
+  <header class="doc-hero">
+    <div class="eyebrow">🏆 Official Rules</div>
+    <h1>Official Rules</h1>
+    <p class="effective-date"><strong>Effective Date:</strong> June 4, 2026</p>
+  </header>
+
+  <div class="doc-layout">
+
+    <aside class="toc" aria-label="Table of contents">
+      <h3>On this page</h3>
+      <ol>
+        <li><a href="#sponsor">Sponsor</a></li>
+        <li><a href="#apple">Apple Is Not a Sponsor</a></li>
+        <li><a href="#skill-based">Skill-Based — Not Gambling</a></li>
+        <li><a href="#eligibility">Eligibility</a></li>
+        <li><a href="#program-period">Program Period</a></li>
+        <li><a href="#participate">How to Participate</a></li>
+        <li><a href="#rewards-determined">How Rewards Are Determined</a></li>
+        <li><a href="#reward-pool">The Reward Pool</a></li>
+        <li><a href="#penalties">Penalties</a></li>
+        <li><a href="#redemption">Rewards &amp; Redemption</a></li>
+        <li><a href="#settlement">Settlement &amp; Dispute Window</a></li>
+        <li><a href="#verification">Verification &amp; Fair Play</a></li>
+        <li><a href="#odds">Odds &amp; Approximate Value</a></li>
+        <li><a href="#taxes">Taxes</a></li>
+        <li><a href="#liability">Release &amp; Limitation of Liability</a></li>
+        <li><a href="#governing-law">Governing Law &amp; Disputes</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="#changes">Changes to These Rules</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </aside>
+
+    <article class="doc-content">
+
+      <div class="intro">
+        <p>These Official Rules govern the Workout Pledge rewards program (the "Program"). The same rules are bundled inside the Workout Pledge app and are available to users at all times. By participating in the Program, you agree to these Rules.</p>
+      </div>
+
+      <section id="sponsor">
+        <h2><span class="section-num">1.</span> Sponsor</h2>
+        <p>The Workout Pledge rewards program (the "Program") is operated and sponsored by Workout Pledge LLC, a Delaware limited liability company ("Workout Pledge," "we," "us," or "our"). Contact: <a href="mailto:info@workoutpledge.app">info@workoutpledge.app</a>.</p>
+      </section>
+
+      <section id="apple">
+        <h2><span class="section-num">2.</span> Apple Is Not a Sponsor</h2>
+        <div class="callout"><strong>Apple Inc. is NOT a sponsor of, and is NOT involved in any way with, Workout Pledge or this Program.</strong> Apple does not administer, endorse, fund, or take any responsibility for the Program, the pledges, the penalties, or the rewards. These Official Rules are an agreement solely between you and Workout Pledge LLC. Any questions, comments, or complaints about the Program must be directed to Workout Pledge LLC, not to Apple.</div>
+      </section>
+
+      <section id="skill-based">
+        <h2><span class="section-num">3.</span> This Is a Skill-Based Program — Not Gambling</h2>
+        <p>Workout Pledge is a voluntary fitness commitment program. Rewards are earned solely through your own verified exercise — by meeting the personal workout goal you set for yourself. <strong>The outcome depends entirely on your own effort, not on chance, luck, a drawing, or the actions of other people.</strong> This is not a lottery, raffle, sweepstakes, or game of chance. Paying a penalty does not earn you rewards and does not improve your chances of earning them; only completing your committed workouts does.</p>
+      </section>
+
+      <section id="eligibility">
+        <h2><span class="section-num">4.</span> Eligibility</h2>
+        <p>The Program is open only to individuals who are at least <strong>18 years old</strong> and who are legal residents of a country where Workout Pledge is available (currently the <strong>United States, Canada, and Australia</strong>). The Program is void where prohibited or restricted by law. You are responsible for complying with the laws of your own jurisdiction, and you may not participate if doing so is prohibited where you live.</p>
+      </section>
+
+      <section id="program-period">
+        <h2><span class="section-num">5.</span> Program Period</h2>
+        <p>The Program runs in weekly cycles. Each pledge week begins on Monday and ends the following Sunday, in the local time zone fixed when you create your pledge. Pledges are rolling and continue from week to week until you pause or cancel them. Workout Pledge may modify or end the Program at any time as described in "Changes to These Rules" below.</p>
+      </section>
+
+      <section id="participate">
+        <h2><span class="section-num">6.</span> How to Participate</h2>
+        <p>To take part, create an account, confirm you are 18 or older, accept the <a href="terms-of-service.html">Terms of Service</a> and <a href="privacy-policy.html">Privacy Policy</a>, and create a pledge. When you create a pledge you choose (a) the number of days per week you commit to working out (1–7) and (b) a penalty amount for each committed day you miss ($10–$100, in your local currency), and you attach a valid payment method. Each committed day requires at least 30 minutes of total workout time; multiple workouts in the same day are added together toward that 30 minutes.</p>
+      </section>
+
+      <section id="rewards-determined">
+        <h2><span class="section-num">7.</span> How Rewards Are Determined</h2>
+        <p>At the end of each week, Workout Pledge counts how many of your committed days reached the 30-minute minimum, verified through Apple HealthKit. If you meet your committed number of days, you are a "winner" for that week and share in that week's reward pool. If you miss one or more committed days, you are charged your chosen penalty for each missed day. <strong>Winners are determined objectively by verified workout data — never by chance, ranking, or a draw.</strong></p>
+      </section>
+
+      <section id="reward-pool">
+        <h2><span class="section-num">8.</span> The Reward Pool and How It Is Funded</h2>
+        <p>Penalties collected from participants who miss their committed days fund the weekly reward pool. Of the penalties collected each week, <strong>50% is retained by Workout Pledge LLC</strong> as a platform service fee to operate and maintain the Program, and <strong>50% is converted into points and distributed among that week's winners</strong>. The pool is divided among winners in proportion to the number of days each winner pledged. Because the pool depends on how many participants missed their goals in a given week, the number of points a winner receives varies from week to week and may be zero in a week where no penalties are collected.</p>
+      </section>
+
+      <section id="penalties">
+        <h2><span class="section-num">9.</span> Penalties</h2>
+        <p>By creating a pledge and attaching a payment method, you authorize Workout Pledge to charge your payment method for penalties you incur. A penalty equals the number of committed days you missed multiplied by your chosen per-miss amount. Charges are processed only after the 3-day dispute window for that week has closed (approximately one week after the pledge week ends). All payments are processed by <strong>Stripe</strong>; Workout Pledge does not store your full card number.</p>
+      </section>
+
+      <section id="redemption">
+        <h2><span class="section-num">10.</span> Rewards and Redemption</h2>
+        <p>Rewards are issued as points, where <strong>1 point is worth 1 cent</strong> (US$0.01 or the local-currency equivalent). Points have no cash value, cannot be transferred or sold, and may be redeemed only within the app for:</p>
+        <ul>
+          <li><strong>Amazon gift cards</strong> in fixed tiers — 500 points ($5), 1,000 points ($10), 2,500 points ($25), and 5,000 points ($50); or</li>
+          <li><strong>Donations</strong> to participating nonprofit organizations, with a minimum redemption of 500 points.</li>
+        </ul>
+        <p>Gift cards are purchased and emailed by Workout Pledge; we aim to fulfill them within 7 business days. Donations are submitted to partner nonprofits on a regular schedule and are not tax-deductible to you. Workout Pledge may change point values, redemption tiers, and available options with reasonable advance notice.</p>
+      </section>
+
+      <section id="settlement">
+        <h2><span class="section-num">11.</span> Settlement and Dispute Window</h2>
+        <p>Settlement happens in two stages. First, an automated evaluation runs at the start of the week after your pledge week and opens a <strong>3-day window</strong> during which you may dispute your result in the app by submitting a written explanation. Second, after the dispute window closes, final settlement charges any penalties and distributes points to winners. We review disputes in good faith. A dispute decision is final under these Rules but does not affect any non-waivable rights you have under applicable consumer-protection law.</p>
+      </section>
+
+      <section id="verification">
+        <h2><span class="section-num">12.</span> Verification and Fair Play</h2>
+        <p>Workouts are verified through Apple HealthKit data synced from your device. You agree <strong>not to falsify, manipulate, or spoof workout data</strong>. We use Apple App Attest and other fraud-detection measures. If we determine that workout data has been manipulated or that these Rules have been violated, we may void the affected results, forfeit related points, charge applicable penalties, and/or suspend or terminate your account.</p>
+      </section>
+
+      <section id="odds">
+        <h2><span class="section-num">13.</span> Odds and Approximate Value</h2>
+        <p>Because rewards are based on your own performance rather than chance, every eligible participant who meets their committed goal shares in that week's reward pool — there is no random "winner." The value of points you may earn depends on the size of the weekly pool and the number and pledge size of the winners that week, and therefore cannot be stated in advance. The maximum redeemable reward tier is a $50 (or local-currency equivalent) Amazon gift card at 5,000 points.</p>
+      </section>
+
+      <section id="taxes">
+        <h2><span class="section-num">14.</span> Taxes</h2>
+        <p>You are solely responsible for any taxes that may apply to rewards you receive, including gift cards. Workout Pledge does not provide tax advice. Consult a tax professional in your country of residence if you have questions.</p>
+      </section>
+
+      <section id="liability">
+        <h2><span class="section-num">15.</span> Release and Limitation of Liability</h2>
+        <p>To the maximum extent permitted by applicable law, by participating you release Workout Pledge LLC and its officers, employees, and agents from any liability for losses, damages, or injuries arising from participation in the Program or from receiving, using, or redeeming any reward. Workout Pledge is not a medical, fitness, or financial advisory service; consult appropriate professionals before starting any exercise program. Nothing in these Rules excludes any liability that cannot be excluded under applicable law.</p>
+      </section>
+
+      <section id="governing-law">
+        <h2><span class="section-num">16.</span> Governing Law and Disputes</h2>
+        <p>For participants resident in the United States, these Rules are governed by the laws of the State of California, and disputes are resolved as described in the Workout Pledge <a href="terms-of-service.html">Terms of Service</a>. For participants resident in Canada or Australia, these Rules are governed by the laws of your country of residence, and nothing in these Rules limits any non-waivable right to bring a claim in your local courts or before a consumer-protection regulator. These Rules incorporate the Workout Pledge Terms of Service; if there is a conflict about the Program specifically, these Rules control.</p>
+      </section>
+
+      <section id="privacy">
+        <h2><span class="section-num">17.</span> Privacy</h2>
+        <p>Information you provide in connection with the Program is handled in accordance with the Workout Pledge <a href="privacy-policy.html">Privacy Policy</a>, available in the app and at <a href="https://workoutpledge.app">workoutpledge.app</a>.</p>
+      </section>
+
+      <section id="changes">
+        <h2><span class="section-num">18.</span> Changes to These Rules</h2>
+        <p>Workout Pledge may update these Official Rules from time to time. If we make material changes, we will notify you through the app or by email. Your continued participation after the effective date of the revised Rules constitutes acceptance of the changes. The current version is always available in the app under Profile → Official Rules.</p>
+      </section>
+
+      <section id="contact">
+        <h2><span class="section-num">19.</span> Contact</h2>
+        <p>
+          <strong>Workout Pledge LLC</strong><br>
+          Email: <a href="mailto:info@workoutpledge.app">info@workoutpledge.app</a><br>
+          Website: <a href="https://workoutpledge.app">workoutpledge.app</a>
+        </p>
+        <p>For questions about these Rules or the Program, contact Workout Pledge LLC. (Remember: Apple is not involved in the Program.)</p>
+      </section>
+
+    </article>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-copy">&copy; 2026 Workout Pledge. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="tour.html">Tour</a>
+        <a href="faq.html">FAQ</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+        <a href="official-rules.html">Official Rules</a>
+        <a href="mailto:info@workoutpledge.app">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('.doc-content section[id]');
+    const tocLinks = document.querySelectorAll('.toc a');
+    const linkById = {};
+    tocLinks.forEach(a => { linkById[a.getAttribute('href').slice(1)] = a; });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.id;
+        const link = linkById[id];
+        if (!link) return;
+        if (entry.isIntersecting) {
+          tocLinks.forEach(a => a.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-30% 0px -55% 0px', threshold: 0 });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>
