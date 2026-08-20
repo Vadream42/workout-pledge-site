@@ -10,27 +10,26 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Why Workout Pledge Works — The Science of Loss Aversion</title>
-  <link rel="canonical" href="https://workoutpledge.app/why-it-works.html" />
+  <title>What Happened to Pact (GymPact)? The App That Paid You to Work Out</title>
+  <link rel="canonical" href="https://workoutpledge.app/pact-app-alternative.html" />
   <meta name="apple-itunes-app" content="app-id=6761924235" />
-  <meta name="description" content="The behavioral science behind Workout Pledge — loss aversion (Kahneman & Tversky's Prospect Theory) and the public-health evidence for 30 minutes of daily exercise." />
+  <meta name="description" content="Pact paid people to work out until it shut down in 2017 amid an FTC settlement. The full story — and how Workout Pledge rebuilt the idea with verified workouts." />
 
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://workoutpledge.app/why-it-works.html" />
-  <meta property="og:title" content="Why It Works — Workout Pledge" />
-  <meta property="og:description" content="The behavioral science and the health evidence behind Workout Pledge." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://workoutpledge.app/pact-app-alternative.html" />
+  <meta property="og:title" content="What Happened to Pact (GymPact)? And What Replaced It" />
+  <meta property="og:description" content="The rise and fall of the app that paid people to work out — and how the modern successor fixes what broke." />
   <meta property="og:image" content="https://workoutpledge.app/og-image.png" />
 
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="icon" href="/favicon.ico" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <style>
+<style>
     :root {
       --color-bg: #FDFAF6;
       --color-surface: #FFFFFF;
@@ -380,11 +379,33 @@
       .cta-box { padding: 2rem 1.25rem; }
       .footer-inner { justify-content: center; text-align: center; }
     }
+  
+    /* ===== Comparison table ===== */
+    .compare-wrap { overflow-x: auto; margin: 1.5rem 0; border-radius: var(--radius); border: 1px solid var(--color-border); box-shadow: var(--shadow-soft); }
+    table.compare { width: 100%; border-collapse: collapse; background: var(--color-surface); font-size: 0.92rem; min-width: 640px; }
+    table.compare th, table.compare td { padding: 0.85rem 1rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--color-border); }
+    table.compare thead th { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; background: var(--color-surface-warm); }
+    table.compare thead th:first-child { width: 22%; }
+    table.compare tbody th { font-weight: 600; color: var(--color-text); }
+    table.compare td { color: var(--color-text-soft); }
+    table.compare .wp-col { background: rgba(224, 122, 95, 0.05); }
+    table.compare tbody tr:last-child th, table.compare tbody tr:last-child td { border-bottom: none; }
   </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What Happened to Pact (GymPact)? And What Replaced It",
+  "description": "The rise and fall of Pact, the app that paid people to work out — why it shut down in 2017, the FTC settlement, and how the modern successor fixes what broke.",
+  "author": { "@type": "Person", "name": "Vadym Samoylov" },
+  "publisher": { "@type": "Organization", "name": "Workout Pledge", "url": "https://workoutpledge.app/" },
+  "mainEntityOfPage": "https://workoutpledge.app/pact-app-alternative.html"
+}
+</script>
 </head>
 <body>
 
-  <nav class="site-nav">
+<nav class="site-nav">
     <a href="index.html" class="nav-logo" aria-label="Workout Pledge home">
       <img src="workout-pledge-logo-2.svg" alt="Workout Pledge shield logo" />
       Workout<span>Pledge</span>
@@ -398,7 +419,7 @@
 
   <div class="page-selector" role="tablist" aria-label="Page navigation">
     <a href="index.html" class="page-pill"><span class="pill-icon">🏠</span> Home</a>
-    <a href="why-it-works.html" class="page-pill active" aria-current="page"><span class="pill-icon">🧠</span> Why It Works</a>
+    <a href="why-it-works.html" class="page-pill"><span class="pill-icon">🧠</span> Why It Works</a>
     <a href="tour.html" class="page-pill"><span class="pill-icon">🎬</span> Tour</a>
     <a href="faq.html" class="page-pill"><span class="pill-icon">💬</span> FAQ</a>
     <a href="privacy-policy.html" class="page-pill"><span class="pill-icon">🔒</span> Privacy</a>
@@ -407,111 +428,87 @@
     <a href="https://apps.apple.com/us/app/workout-pledge/id6761924235" target="_blank" rel="noopener" class="page-pill cta">📲 Download on iOS</a>
   </div>
 
+  
   <header class="doc-hero">
-    <div class="eyebrow">🧠 The Science</div>
-    <h1>Why It <em>Works.</em></h1>
-    <p class="lead">Workout Pledge sits at the intersection of two well-established bodies of research: the behavioral economics of <strong>loss aversion</strong>, and the public-health evidence for <strong>30 minutes of daily movement</strong>. Here's a plain-language tour of both.</p>
-    <a href="tour.html" class="btn btn-primary" style="font-weight: 700;">▶&nbsp;&nbsp;Take the 1-min Tour</a>
+    <div class="eyebrow">📜 A Cautionary Tale</div>
+    <h1>What Happened to <em>Pact</em>? And What Replaced It</h1>
+    <p class="lead">A decade ago, an app called Pact (originally GymPact) paid people to work out — funded by the pledges of people who skipped. The idea was brilliant. The execution collapsed. Here's the story, and what a modern version had to fix.</p>
   </header>
 
   <div class="stat-strip">
     <div class="stat-card">
-      <div class="v">2×</div>
-      <div class="l">A loss feels roughly twice as strong as an equivalent gain<sup>1,2</sup></div>
+      <div class="v">2010</div>
+      <div class="l">GymPact founded out of the TechStars accelerator</div>
     </div>
     <div class="stat-card">
-      <div class="v">150 min</div>
-      <div class="l">Weekly moderate activity recommended by the WHO &amp; US guidelines<sup>3,4</sup></div>
+      <div class="v">250k+</div>
+      <div class="l">Workouts incentivized by mid-2012</div>
     </div>
     <div class="stat-card">
-      <div class="v">9%</div>
-      <div class="l">Share of premature deaths globally attributed to inactivity<sup>5</sup></div>
+      <div class="v">2017</div>
+      <div class="l">Pact shuts down; FTC settlement announced</div>
     </div>
     <div class="stat-card">
-      <div class="v">+3 yrs</div>
-      <div class="l">Added life expectancy from just 15 min/day of moderate exercise<sup>6</sup></div>
+      <div class="v">~$948k</div>
+      <div class="l">Ordered returned to users in the FTC settlement</div>
     </div>
   </div>
 
   <main class="article">
 
-    <section id="loss-aversion">
-      <h2><span class="num">01</span>The Science of Loss Aversion</h2>
-
-      <p>Workout Pledge is built on one of the most replicated findings in behavioral economics: <strong>people work harder to avoid losing something than to earn it.</strong> The principle is called <strong>loss aversion</strong>, and it was first formalized by psychologists <a href="https://www.nobelprize.org/prizes/economic-sciences/2002/kahneman/biographical/" target="_blank" rel="noopener">Daniel Kahneman</a> and <strong>Amos Tversky</strong> in their 1979 paper <em>"Prospect Theory: An Analysis of Decision under Risk,"</em> published in <em>Econometrica</em><sup>1</sup>. It is still one of the most-cited papers in the history of that journal. In it, Kahneman and Tversky observed:</p>
-
-      <blockquote class="pullquote">
-        "The aggravation that one experiences in losing a sum of money appears to be greater than the pleasure associated with gaining the same amount."
-        <cite>— Kahneman &amp; Tversky, <em>Econometrica</em>, 1979</cite>
-      </blockquote>
-
-      <p>In a 1992 follow-up, <em>"Advances in Prospect Theory: Cumulative Representation of Uncertainty,"</em> Tversky and Kahneman estimated the asymmetry quantitatively: the <strong>loss aversion coefficient (λ) is approximately 2.25</strong>, meaning losses are felt roughly twice as intensely as gains of equivalent size<sup>2</sup>. Kahneman summarized the finding in his 2011 book <em>Thinking, Fast and Slow</em> with the now-famous phrase that <em>"losses loom larger than gains."</em> Kahneman went on to win the <strong>2002 Nobel Memorial Prize in Economic Sciences</strong> for this body of work; Tversky, who passed away in 1996, would have shared it.</p>
-
-      <p>Workout Pledge applies that finding directly. The same small dollar amount feels more motivating as a potential <em>loss</em> than as a potential reward — and that small extra push is often enough to turn "I should work out today" into "I'm going to work out today." We're not the first to use the idea; commitment-contract platforms like StickK have applied loss aversion to behavior change since 2008. We just packaged it for fitness specifically and verify your workouts automatically through Apple Health, so there's nothing to fudge. Curious how we stack up against other accountability apps? See our honest <a href="workout-pledge-vs-stepbet-vs-forfeit.html">comparison with StepBet and Forfeit</a>, or read <a href="pact-app-alternative.html">what happened to Pact</a>, the app that pioneered this idea.</p>
+    <section id="the-idea">
+      <h2>The Idea Was Right</h2>
+      <p>GymPact launched in 2010 with a premise straight out of behavioral economics: <strong>people work harder to avoid a loss than to chase a gain.</strong> Users made a weekly "pact" to exercise, pledged a penalty of $5–$50 for each missed session, and — if they followed through — earned a small cash reward (typically $0.30–$5 a week) funded by the penalties of those who didn't. By mid-2012 it had incentivized more than 250,000 workouts, raised a seed round backed by notable tech investors, and in 2014 rebranded as Pact, expanding into diet tracking.</p>
+      <p>The behavioral engine worked. The rest of the machine didn't.</p>
     </section>
 
-    <section id="thirty-minutes">
-      <h2><span class="num">02</span>Why 30 Minutes a Day</h2>
-
-      <p>The 30-minute daily threshold isn't arbitrary — it lines up almost exactly with the public-health consensus. Both the <a href="https://www.who.int/news-room/fact-sheets/detail/physical-activity" target="_blank" rel="noopener">World Health Organization</a><sup>3</sup> and the <a href="https://health.gov/sites/default/files/2019-09/Physical_Activity_Guidelines_2nd_edition.pdf" target="_blank" rel="noopener">2018 Physical Activity Guidelines for Americans</a> (US Department of Health and Human Services)<sup>4</sup> recommend that adults get at least <strong>150 minutes of moderate-intensity activity per week</strong>, which works out to 30 minutes a day, five days a week.</p>
-
-      <p>Several large-scale studies have documented exactly what those 30 minutes buy you:</p>
+    <section id="what-broke">
+      <h2>Three Things Broke</h2>
 
       <div class="study-card">
-        <h3>Physical inactivity is responsible for ~9% of premature deaths worldwide</h3>
-        <div class="study-meta">
-          Lee, I-M., Shiroma, E. J., Lobelo, F., et al. (2012). "Effect of physical inactivity on major non-communicable diseases worldwide: an analysis of burden of disease and life expectancy." <em>The Lancet</em>, 380(9838), 219–229.
-          &nbsp;·&nbsp;
-          <a href="https://www.thelancet.com/article/S0140-6736(12)61031-9/fulltext" target="_blank" rel="noopener">View on The Lancet ↗</a>
-        </div>
-        <p>This Harvard-led international analysis concluded that inactivity causes <strong>6% of coronary heart disease</strong>, <strong>7% of type-2 diabetes</strong>, <strong>10% of breast cancer</strong>, and <strong>10% of colon cancer</strong> globally. It estimated that <strong>more than 5.3 million deaths per year</strong> — about 9% of all premature mortality — are attributable to physical inactivity.</p>
-        <div class="takeaway"><strong>Takeaway:</strong> moving your body is a public-health intervention on the same order of magnitude as quitting smoking.</div>
+        <h3>1. Verification was easy to cheat</h3>
+        <div class="study-meta">GPS gym check-ins from a database of 40,000+ locations, plus RunKeeper and tracker integrations</div>
+        <p>Pact verified workouts mainly by <strong>GPS check-in</strong>: stand inside a registered gym for 30 minutes and the workout counted. GPS can be spoofed, phones can be left at the gym, and users even registered non-gyms as gyms. Honest users watched cheaters collect rewards from their forfeited pledges — and trust drained out of the system.</p>
+        <div class="takeaway"><strong>The lesson:</strong> if money is on the line, verification has to come from something harder to fake than location.</div>
       </div>
 
       <div class="study-card">
-        <h3>Just 15 minutes a day adds ~3 years of life expectancy</h3>
-        <div class="study-meta">
-          Wen, C. P., Wai, J. P., Tsai, M. K., et al. (2011). "Minimum amount of physical activity for reduced mortality and extended life expectancy: a prospective cohort study." <em>The Lancet</em>, 378(9798), 1244–1253.
-          &nbsp;·&nbsp;
-          <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(11)60749-6/abstract" target="_blank" rel="noopener">View on The Lancet ↗</a>
-        </div>
-        <p>Following more than <strong>416,000 adults</strong> over an average of eight years, the researchers found that just 15 minutes of moderate exercise per day was associated with a <strong>14% reduction in all-cause mortality</strong> and roughly <strong>three additional years of life expectancy</strong> compared with being inactive. Each additional 15 minutes per day reduced mortality risk by a further 4%.</p>
-        <div class="takeaway"><strong>Takeaway:</strong> the marginal benefit of going from zero to a little is huge — far bigger than going from a lot to a lot more.</div>
+        <h3>2. Billing broke people's trust</h3>
+        <div class="study-meta">FTC complaint, September 2017 — <a href="https://www.ftc.gov/news-events/news/press-releases/2017/09/mobile-app-settles-ftc-allegations-it-failed-deliver-promised-cash-rewards-meeting-exercise-diet" target="_blank" rel="noopener">read the press release ↗</a></div>
+        <p>The Federal Trade Commission alleged that Pact <strong>charged users penalties even when they had met their goals or tried to cancel</strong>, and failed to pay promised rewards. Pact settled, agreeing to return roughly <strong>$948,000</strong> to affected users. By then the company had already shut down, in mid-2017.</p>
+        <div class="takeaway"><strong>The lesson:</strong> in an app that touches your money, transparent charges and easy cancellation aren't features — they're the whole foundation.</div>
       </div>
 
       <div class="study-card">
-        <h3>Meeting the 150-min/week guideline cuts risk of major diseases by 20–30%</h3>
-        <div class="study-meta">
-          US Department of Health and Human Services (2018). <em>Physical Activity Guidelines for Americans, 2nd edition.</em> &nbsp;·&nbsp;
-          American Heart Association recommendations &nbsp;·&nbsp;
-          <a href="https://www.heart.org/en/healthy-living/fitness/fitness-basics/aha-recs-for-physical-activity-in-adults" target="_blank" rel="noopener">AHA guidelines ↗</a>
-        </div>
-        <p>Hitting the standard weekly target is associated with a <strong>20–30% lower risk</strong> of cardiovascular disease, type-2 diabetes, depression, several common cancers, and dementia. Benefits scale with dose up to roughly 300 minutes per week, after which they plateau.</p>
-        <div class="takeaway"><strong>Takeaway:</strong> consistency at a modest level beats sporadic intensity. Showing up most days matters more than going hard occasionally.</div>
+        <h3>3. Cash payouts turned an app into a bank</h3>
+        <div class="study-meta">Weekly cash rewards of $0.30–$5, collected from penalties and paid out to winners</div>
+        <p>Pact paid winners in <strong>cash</strong>, which meant the company was effectively operating a small bank: collecting penalties, holding user money, and processing payouts. Every missed workout was a billing event; every successful week was a payout obligation. That is an enormous amount of financial machinery for a fitness app — and it's precisely where the wheels came off. The FTC complaint was, at its core, about money-handling promises the company couldn't keep.</p>
+        <div class="takeaway"><strong>The lesson:</strong> keep the real-money surface of the product as small and simple as possible.</div>
       </div>
+    </section>
 
-      <div class="study-card">
-        <h3>Short bouts count — you don't need 30 minutes in one block</h3>
-        <div class="study-meta">
-          US Department of Health and Human Services (2018). <em>Physical Activity Guidelines for Americans, 2nd edition.</em> — Chapter 4: "Active Adults" &nbsp;·&nbsp;
-          <a href="https://health.gov/sites/default/files/2019-09/Physical_Activity_Guidelines_2nd_edition.pdf" target="_blank" rel="noopener">Read the guidelines ↗</a>
-        </div>
-        <p>The 2018 update to the federal guidelines explicitly dropped the previous "10-minute minimum bout" rule. <strong>All movement counts toward your weekly total</strong> — a 15-minute walk in the morning plus a 20-minute strength session in the evening is as protective as a single 35-minute workout.</p>
-        <div class="takeaway"><strong>Takeaway:</strong> this is exactly why Workout Pledge stacks multiple workouts in the same day toward your 30-minute threshold. The science says it works that way; we just respect that.</div>
-      </div>
+    <section id="beyond-the-gym">
+      <h2>The World Changed, Too</h2>
+      <p>There's one more thing Pact couldn't have seen coming. Its whole verification model was built around the gym — literally: a workout was a GPS check-in at one of 40,000+ registered gyms. And to be clear, <strong>gyms are great.</strong> The equipment, the classes, the energy of a room full of people working toward something — for many people, a gym membership is the best fitness investment they'll ever make.</p>
+      <p>But in 2020, COVID closed the gyms — and millions of people had to find new ways to move. Living-room HIIT sessions, runs that started at the front door, bikes on trainers, yoga mats between the couch and the coffee table, barbells in the garage. When gyms reopened, plenty of people went back. Plenty of others discovered that their best workout doesn't happen inside four particular walls.</p>
+      <p>We wanted an app that's inclusive of all of it. <strong>Work out your way</strong> — at the gym, at home, on the trail, in the pool. If it gets your body moving for 30 minutes, it counts. The only thing you need is a fitness tracker that works with <strong>Apple Health</strong> — an Apple Watch or any compatible tracker.</p>
+    </section>
 
-      <p style="margin-top: 2rem;">Bottom line: <strong>loss aversion is what gets you to lace up your shoes.</strong> Thirty minutes of movement, even split across the day, is what gives you the actual health benefit. Workout Pledge connects the two.</p>
+    <section id="what-replaced">
+      <h2>What a Modern Successor Had to Fix</h2>
+      <p>We built <strong>Workout Pledge</strong> a decade after Pact's launch, with its post-mortem taped to the wall. Three design decisions map directly onto the three failures:</p>
+      <p><strong>Sensor-verified workouts, not check-ins.</strong> Workouts are verified through <strong>Apple Health</strong> — heart rate and activity data recorded by your Apple Watch or iPhone during a real 30-minute workout. There's no gym database, no GPS check-in, no photo to stage. Any workout counts: lifting, running, yoga, cycling.</p>
+      <p><strong>Weekly, transparent settlement.</strong> You set your own weekly goal and your own pledge per missed day. You're charged only for days you actually miss, you can see exactly why, and you can pause or adjust your pledge. The <a href="official-rules.html">Official Rules</a> are public.</p>
+      <p><strong>Points, not cash.</strong> Pact was running a small bank, and the bank is what failed. We simplified the system: successful weeks earn <strong>points</strong>, redeemable for gift cards or donatable to a nonprofit. No cash balances to hold, no payout queue to manage — just a clear weekly ledger you can always see. And because the outcome depends entirely on your own behavior, it's a commitment contract, not a game of chance: a pledge you make to yourself, with real stakes and no house.</p>
+      <p>Pact proved the demand and the psychology (the same loss-aversion research we walk through in <a href="why-it-works.html">Why It Works</a>). It just needed the 2020s to be buildable properly. If you're comparing today's options, we also wrote an honest <a href="workout-pledge-vs-stepbet-vs-forfeit.html">side-by-side of Workout Pledge, StepBet, and Forfeit</a>.</p>
 
       <div class="reference-list">
-        <h4>References</h4>
+        <h4>Sources</h4>
         <ol>
-          <li>Kahneman, D., &amp; Tversky, A. (1979). "Prospect Theory: An Analysis of Decision under Risk." <em>Econometrica</em>, 47(2), 263–292. <a href="https://www.jstor.org/stable/1914185" target="_blank" rel="noopener">JSTOR ↗</a></li>
-          <li>Tversky, A., &amp; Kahneman, D. (1992). "Advances in Prospect Theory: Cumulative Representation of Uncertainty." <em>Journal of Risk and Uncertainty</em>, 5(4), 297–323. <a href="https://link.springer.com/article/10.1007/BF00122574" target="_blank" rel="noopener">Springer ↗</a></li>
-          <li>World Health Organization (2024). "Physical activity" fact sheet. <a href="https://www.who.int/news-room/fact-sheets/detail/physical-activity" target="_blank" rel="noopener">who.int ↗</a></li>
-          <li>US Department of Health and Human Services (2018). <em>Physical Activity Guidelines for Americans, 2nd edition.</em> <a href="https://health.gov/sites/default/files/2019-09/Physical_Activity_Guidelines_2nd_edition.pdf" target="_blank" rel="noopener">health.gov ↗</a></li>
-          <li>Lee, I-M., Shiroma, E. J., Lobelo, F., et al. (2012). "Effect of physical inactivity on major non-communicable diseases worldwide." <em>The Lancet</em>, 380(9838), 219–229. <a href="https://www.thelancet.com/article/S0140-6736(12)61031-9/fulltext" target="_blank" rel="noopener">The Lancet ↗</a></li>
-          <li>Wen, C. P., Wai, J. P., Tsai, M. K., et al. (2011). "Minimum amount of physical activity for reduced mortality and extended life expectancy: a prospective cohort study." <em>The Lancet</em>, 378(9798), 1244–1253. <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(11)60749-6/abstract" target="_blank" rel="noopener">The Lancet ↗</a></li>
-          <li>Kahneman, D. (2011). <em>Thinking, Fast and Slow.</em> New York: Farrar, Straus and Giroux.</li>
+          <li>TechCrunch (2012). "GymPact Grabs $850K From Guitar Hero Founder &amp; More." <a href="https://techcrunch.com/2012/06/28/gympact-seed-round/" target="_blank" rel="noopener">techcrunch.com ↗</a></li>
+          <li>TechCrunch (2014). "GymPact, The App That Pays You For Working Out, Relaunches As Pact." <a href="https://techcrunch.com/2014/01/01/pact/" target="_blank" rel="noopener">techcrunch.com ↗</a></li>
+          <li>Federal Trade Commission (2017). "Mobile App Settles FTC Allegations That it Failed to Deliver Promised Cash Rewards for Meeting Exercise and Diet Goals." <a href="https://www.ftc.gov/news-events/news/press-releases/2017/09/mobile-app-settles-ftc-allegations-it-failed-deliver-promised-cash-rewards-meeting-exercise-diet" target="_blank" rel="noopener">ftc.gov ↗</a></li>
+          <li>Gizmodo (2017). "App That Paid Users to Exercise Owes Nearly $1 Million for Not Paying Users to Exercise." <a href="https://gizmodo.com/app-that-paid-users-to-exercise-owes-nearly-1-million-1818632078" target="_blank" rel="noopener">gizmodo.com ↗</a></li>
         </ol>
       </div>
     </section>
@@ -520,16 +517,17 @@
 
   <section class="cta-section">
     <div class="cta-box">
-      <h2>Ready to put the science to work?</h2>
-      <p>Download Workout Pledge on iOS today — or join the Android waitlist to be first in line when it lands on Google Play.</p>
+      <h2>The idea deserved a second chance. Here it is.</h2>
+      <p>Set a weekly goal, put a small pledge behind it, and let your watch do the verifying.</p>
       <div class="cta-row">
         <a href="https://apps.apple.com/us/app/workout-pledge/id6761924235" target="_blank" rel="noopener" class="btn btn-primary">📲&nbsp;&nbsp;Download on iOS App Store</a>
-        <a href="index.html#cta" class="btn btn-outline">Join Android Waitlist</a>
+        <a href="why-it-works.html" class="btn btn-outline">🧠&nbsp;&nbsp;Read the Science</a>
       </div>
     </div>
   </section>
 
-  <footer>
+
+<footer>
     <div class="footer-inner">
       <div class="footer-copy">&copy; 2026 Workout Pledge. All rights reserved.</div>
       <div class="footer-links">
